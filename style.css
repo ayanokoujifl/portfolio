@@ -108,10 +108,21 @@ main .contact .links {
 main .contact .links span {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-main .contact .links span::after {
+main .contact .links .github::after {
   content: "Github";
+}
+main .contact .links .linkedin::after {
+  content: "Linkedin";
+}
+main .contact .links .whatsapp::after {
+  content: "Whatsapp";
+}
+main .contact .links .instagram::after {
+  content: "instagram";
 }
 
 @-webkit-keyframes holeOut {

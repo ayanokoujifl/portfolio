@@ -78,7 +78,7 @@ main .contact div {
   border-radius: 4px;
   box-shadow: 8px 10px 5px #00192e;
   padding: 2rem 4rem;
-  width: 400px;
+  width: 35vw;
   height: 150px;
   display: flex;
   flex-direction: column;
@@ -100,8 +100,7 @@ main .contact .links {
   top: 0;
   right: 3rem;
   display: flex;
-  width: 400px;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
 }
 
@@ -110,11 +109,23 @@ main .contact .links span {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: 400ms;
+}
+
+main .contact .links span:not(:hover) {
+  opacity: 0.8;
+}
+
+main .contact .links span:hover {
+  cursor: pointer;
+  font-size: 20px;
+  padding-bottom: 8px;
 }
 
 main .contact .links .github::after {
   content: "Github";
 }
+
 main .contact .links .linkedin::after {
   content: "Linkedin";
 }
@@ -313,4 +324,56 @@ main .contact .links .instagram::after {
   display: flex;
   align-items: center;
   padding: 6px;
+}
+
+.links .github:hover a {
+  background: linear-gradient(#006fcb, #006fcb) padding-box,
+    linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(102, 102, 102, 1) 60%,
+        rgba(255, 255, 255, 1) 100%
+      )
+      border-box;
+  border: 3px solid transparent;
+}
+
+.links .linkedin:hover a {
+  background: linear-gradient(#006fcb, #006fcb) padding-box,
+    linear-gradient(
+        90deg,
+        rgb(0, 15, 133) 0%,
+        rgb(49, 59, 195) 60%,
+        rgb(20, 41, 228) 100%
+      )
+      border-box;
+  border: 3px solid transparent;
+}
+
+.links .whatsapp:hover a {
+  background: linear-gradient(#006fcb, #006fcb) padding-box,
+    linear-gradient(
+        90deg,
+        rgb(122, 252, 122) 0%,
+        rgb(44, 121, 21) 50%,
+        rgb(5, 57, 0) 100%
+      )
+      border-box;
+  border: 3px solid transparent;
+}
+
+.links .instagram:hover a {
+  background: linear-gradient(#006fcb, #006fcb) padding-box,
+    linear-gradient(
+        90deg,
+        rgb(255, 113, 174) 0%,
+        rgb(123, 30, 106) 50%,
+        rgb(93, 3, 93) 100%
+      )
+      border-box;
+  border: 3px solid transparent;
+}
+
+.links a i {
+  font-size: 24px;
 }

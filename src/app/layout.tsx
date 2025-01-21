@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { JetBrains_Mono } from "next/font/google"
+import { JetBrains_Mono, Fira_Mono } from "next/font/google"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -11,6 +11,11 @@ export const metadata: Metadata = {
 }
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] })
+const firaSans = Fira_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-fira-sans",
+})
 
 export default function RootLayout({
   children,
@@ -19,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${jetBrainsMono.className} antialiased`}>
+      <body
+        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

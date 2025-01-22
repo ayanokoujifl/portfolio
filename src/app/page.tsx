@@ -1,3 +1,4 @@
+import { Cube } from "@/components/cube"
 import { Cursor } from "@/components/cursor"
 import { Header } from "@/components/header"
 import { Box, Layers2 } from "lucide-react"
@@ -6,8 +7,12 @@ import colors from "tailwindcss/colors"
 export default function Home() {
   return (
     <>
-      <Cursor />
-      <main className="min-h-screen bg-gray-100 flex flex-col">
+      <main
+        className="min-h-screen bg-gray-100 flex 
+      flex-col"
+      >
+        <Cursor />
+
         <Header />
         <div className="flex flex-col flex-1 items-center justify-center">
           <div>
@@ -29,6 +34,7 @@ export default function Home() {
             <p>see my projects</p>
             <p>contact me</p>
           </div>
+          <Cube />
         </div>
       </main>
     </>

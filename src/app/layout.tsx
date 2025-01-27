@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased cursor-none`}
+        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased overflow-hidden`}
       >
         {children}
       </body>

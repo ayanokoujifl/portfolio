@@ -1,8 +1,8 @@
 import { Cube } from "@/components/cube"
-import { Cursor } from "@/components/cursor"
 import { Header } from "@/components/header"
 import { Box, Layers2 } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 import colors from "tailwindcss/colors"
 export default function Home() {
   return (
@@ -11,13 +11,11 @@ export default function Home() {
         className="min-h-screen bg-gray-100 flex 
       flex-col"
       >
-        <Cursor />
-
         <Header />
         <div className="flex flex-col flex-1 items-center justify-center">
-          <div>
+          <div className="cursor-default">
             <p
-              className="text-2xl font-extrabold text-transparent tracking-wide text-center cursor-default"
+              className="text-2xl font-extrabold text-transparent tracking-wide text-center "
               style={{
                 WebkitTextStrokeWidth: "2px",
                 WebkitTextStrokeColor: colors.gray[900],
@@ -26,13 +24,18 @@ export default function Home() {
               Hi! I’m <span className="text-gray-900">Luís Gustavo</span>, Owner
               and creator of
             </p>
-            <p className="text-2xl md:text-3xl font-extrabold text-cyan-500 text-center cursor-default">
+            <p className="text-2xl md:text-3xl font-extrabold text-cyan-500 text-center ">
               {"<dev atomic journey/>"}
             </p>
           </div>
           <div className="flex gap-4 mt-4">
-            <p>see my projects</p>
-            <p>contact me</p>
+            <p className="border-b-2 border-cyan-500 cursor-pointer hover:border-none hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold">
+              see my projects
+            </p>
+            <div className="h-6 w-px bg-gray-900" />
+            <p className="border-b-2 border-cyan-500 cursor-pointer hover:border-none hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold">
+              about me
+            </p>
           </div>
           <Cube />
         </div>

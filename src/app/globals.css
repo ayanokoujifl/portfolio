@@ -2,9 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-
 *::selection {
   background-color: #180370;
   color: #24e4ee;
   -webkit-text-stroke: 0px;
+}
+
+ul li p {
+  letter-spacing: 0.4px;
+}
+
+.loop-gradient {
+  background: linear-gradient(90deg,
+      #180370,
+      #24e4ee,
+      #180370,
+      #24e4ee,
+      #180370);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: loop-gradient 10s ease-in-out infinite;
+}
+
+@keyframes loop-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }

@@ -10,8 +10,13 @@ export default {
     extend: {
       fontFamily: {
         fira: ["var(--font-fira-sans)"],
+        
       },
     },
+    screens: {
+      md: "648px",
+    },
   },
+
   plugins: [],
 } satisfies Config

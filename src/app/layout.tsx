@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   },
 }
 
-const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] })
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+})
 const firaSans = Fira_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased overflow-hidden`}
+        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased`}
       >
         {children}
       </body>

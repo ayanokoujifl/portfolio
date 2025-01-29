@@ -222,6 +222,14 @@ export default function AboutMe() {
                 </p>
               </div>
             </li>
+            <li className="border-b-2 border-slate-300 pb-3">
+              <div className="flex gap-1.5 flex-wrap">
+                <h6 className="font-bold">Course - Excel</h6>
+                <p className="text-sm text-slate-600 font-light font-jetbrains">
+                  {"- Hashtag treinamentos"}
+                </p>
+              </div>
+            </li>
           </ul>
         </section>
       </main>

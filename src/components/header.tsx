@@ -9,6 +9,7 @@ export function Header() {
         <a
           href="https://github.com/dev-atomic-journey"
           className="text-xs text-slate-400/90 flex items-center gap-2"
+          target="_blank"
         >
           <Image src={Atomic} alt="atomic.png" className="size-10" priority />
           @dev_atomic_journey

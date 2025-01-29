@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased`}
+        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased bg-gray-100`}
       >
         <Suspense fallback={<Loading />}>{children}</Suspense>
       </body>

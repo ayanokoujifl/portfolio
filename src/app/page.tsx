@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <main
-        className="min-h-screen bg-gray-100 flex 
+        className="min-h-screen flex 
       flex-col overflow-hidden"
       >
         <Header />

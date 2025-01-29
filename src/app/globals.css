@@ -71,8 +71,8 @@ ul li p {
 }
 
 .carousel-bg:hover {
-  background: linear-gradient(120deg, #f1f5f9, #475569);
-  animation: carousel-bg 1s ease-out;
+  background: linear-gradient(120deg, #f1f5f9, #9eeefa);
+  animation: carousel-bg 1s linear;
   background-size: 300%;
   background-position: -100% 0%;
 }

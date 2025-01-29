@@ -1,6 +1,7 @@
 import { Box, Layers2 } from "lucide-react"
 import Image from "next/image"
 import Atomic from "@/assets/atomic.png"
+import { DropdownHeader } from "./dropdown-header"
 
 export function Header() {
   return (
@@ -16,17 +17,13 @@ export function Header() {
         </a>
       </div>
       <div className="hidden md:flex gap-3">
-        <span className="cursor-pointer text-gray-900 hover:font-medium hover:text-cyan-600 transition-all ease-out duration-100">
+        <span className="cursor-pointer text-gray-900 hover:font-semibold hover:text-cyan-600 transition-all ease-out duration-100">
           EN
         </span>
-        <span className="text-gray-900 hover:text-cyan-400 hover:cursor-pointer transition-all ease-in-out duration-200">
-          <Box />
-        </span>
+        <DropdownHeader icon={Box} />
       </div>
       <div className="md:hidden block">
-        <span className="text-gray-900 active:text-cyan-400 transition-all ease-in duration-150">
-          <Layers2 size={28} strokeWidth={2} />
-        </span>
+        <DropdownHeader icon={Layers2} />
       </div>
     </div>
   )

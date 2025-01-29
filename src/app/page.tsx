@@ -2,6 +2,7 @@
 import { Header } from "@/components/header"
 import { useRouter } from "next/navigation"
 import colors from "tailwindcss/colors"
+import Loading from "./loading"
 export default function Home() {
   const route = useRouter()
 
@@ -25,7 +26,11 @@ export default function Home() {
             </p>
           </div>
           <div className="flex gap-4 my-4">
-            <p className="border-b-2 border-cyan-500 cursor-pointer hover:border-none hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold">
+            <p
+              className="border-b-2 border-cyan-500 cursor-pointer hover:border-none hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold select-none"
+              onClick={() => route.push("/projects")}
+              contentEditable={false}
+            >
               see my projects
             </p>
             <div className="h-6 w-px bg-gray-900" />

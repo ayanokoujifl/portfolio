@@ -1,3 +1,5 @@
+"use client"
+
 import { AtomicIcon } from "@/components/atomicIcon"
 import { Header } from "@/components/header"
 
@@ -154,7 +156,8 @@ export default function AboutMe() {
                   {"- 2023 - Present"}
                 </p>
                 <p className="text-justify">
-                  I am currently working as a mobile developer at PMMG (state
+                  I am currently working as a mobile developer at{" "}
+                  <span className="font-medium text-red-600">PMMG</span> (state
                   public security institution). I am responsible for developing
                   APIs REST that provide practicality for military personnel in
                   action and for the internal application of the PMRv (Military
@@ -167,8 +170,8 @@ export default function AboutMe() {
         <div className="h-0.5 w-full bg-slate-500" />
         <section className="flex flex-col flex-1 items-center justify-center">
           <h3 className="text-xl font-bold">Education</h3>
-          <ul className="flex flex-col gap-3  px-8 py-4 md:px-5">
-            <li className="border-b-2 border-slate-300 pb-3">
+          <ul className="flex flex-col gap-3 w-full  px-8 py-4 md:px-5">
+            <li className=" border-b-2 border-slate-300 pb-3">
               <div className="flex gap-1.5 flex-wrap">
                 <h6 className="font-bold">
                   Information systems - university education

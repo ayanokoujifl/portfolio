@@ -11,10 +11,10 @@ export function Card({ title, thumbnail, redirect, description }: Props) {
   return (
     <>
       <div
-        className="relative card-wrapper"
+        className="relative card-wrapper w-full md:w-[28rem] "
         onClick={() => window.open(redirect, "_blank")}
       >
-        <div className="flex flex-col items-center border-2 border-gray-700 rounded w-[28rem] aspect-video justify-center cursor-pointer relative card-front">
+        <div className="flex flex-col items-center border-2 border-gray-700 rounded aspect-video justify-center cursor-pointer relative card-front">
           <Image
             src={thumbnail}
             alt={title}

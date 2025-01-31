@@ -14,7 +14,7 @@ export default function Projects() {
         <h1 className="text-center text-2xl font-extrabold text-cyan-600 font-fira tracking-wide">
           Look at my projects
         </h1>
-        <section className="flex flex-col py-4 bg-gray-100 px-3">
+        <section className="flex flex-col py-4 bg-gray-100 px-5">
           <h3>Web</h3>
           <p className="text-xs text-gray-600 mb-3">
             I've done a lot of web projects, but I'll just show some of them as

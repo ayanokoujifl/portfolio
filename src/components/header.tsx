@@ -1,9 +1,13 @@
+import Atomic from "@/assets/atomic.png"
 import { Box, Layers2 } from "lucide-react"
 import Image from "next/image"
-import Atomic from "@/assets/atomic.png"
+import { usePathname, useRouter } from "next/navigation"
 import { DropdownHeader } from "./dropdown-header"
 
 export function Header() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const [language, route] = pathname.split("/").slice(1)
   return (
     <div className="flex items-center justify-between p-3">
       <div className="flex items-center gap-2">
@@ -17,8 +21,13 @@ export function Header() {
         </a>
       </div>
       <div className="hidden md:flex gap-3">
-        <span className="cursor-pointer text-gray-900 hover:font-semibold hover:text-cyan-600 transition-all ease-out duration-100">
-          EN
+        <span
+          className="cursor-pointer text-gray-900 hover:font-semibold hover:text-cyan-600 transition-all ease-out duration-100"
+          onClick={() =>
+            router.replace(`/${language === "en" ? "pt" : "en"}/${route}`)
+          }
+        >
+          {pathname.startsWith("/en") ? "EN" : "PT"}
         </span>
         <DropdownHeader icon={Box} />
       </div>

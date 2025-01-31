@@ -62,7 +62,9 @@ export function DropdownHeader({ icon: Icon }: Props) {
         <DropdownMenuItem
           className="md:hidden block"
           onClick={() => {
-            const url = `/${language === "en" ? "pt" : "en"}/${route}`
+            const url = `/${language === "en" ? "pt" : "en"}/${
+              route ? route : ""
+            }`
             router.replace(url)
           }}
         >

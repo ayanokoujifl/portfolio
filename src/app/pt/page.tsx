@@ -48,17 +48,6 @@ export default function Home() {
             <source src="/animation.webm" type="video/mp4" />
           </video>
         </div>
-        <footer className="flex gap-3 pb-3 items-center justify-center">
-          <div className="flex items-center gap-0.5 text-slate-400 text-xs hover:text-cyan-500 duration-100 ease-in transition-colors cursor-pointer">
-            <Instagram size={16} />
-            <span>@dev_atomic_journey</span>
-          </div>
-          <div className="flex items-center gap-0.5 text-slate-400 text-xs hover:text-cyan-500 duration-100 ease-in transition-colors cursor-pointer">
-            <Github size={16} />
-            <span>dev-atomic-journey</span>
-          </div>
-          <div></div>
-        </footer>
       </main>
     </>
   )

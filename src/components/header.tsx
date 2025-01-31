@@ -24,7 +24,9 @@ export function Header() {
         <span
           className="cursor-pointer text-gray-900 hover:font-semibold hover:text-cyan-600 transition-all ease-out duration-100"
           onClick={() =>
-            router.replace(`/${language === "en" ? "pt" : "en"}/${route}`)
+            router.replace(
+              `/${language === "en" ? "pt" : "en"}/${route ? route : ""}`
+            )
           }
         >
           {pathname.startsWith("/en") ? "EN" : "PT"}

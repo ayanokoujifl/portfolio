@@ -1,10 +1,16 @@
 "use client"
 
 import { Card } from "@/components/card"
+import { MobileCard } from "@/components/mobile-card"
 import { Header } from "@/components/header"
 import OR from "@/assets/projects/OR.png"
 import Events from "@/assets/projects/events.png"
 import Pokedex from "@/assets/projects/pokedex.png"
+
+//mobile assets
+import Food1 from "@/assets/projects/mobile/food/food-1.jpg"
+import Food2 from "@/assets/projects/mobile/food/food-2.jpg"
+import Food3 from "@/assets/projects/mobile/food/food-3.jpg"
 
 export default function Projects() {
   return (
@@ -43,6 +49,14 @@ export default function Projects() {
         </section>
         <section>
           <h3>Mobile</h3>
+          <div className="flex flex-1 flex-wrap justify-center  gap-4 lg:gap-8">
+            <MobileCard
+              title="food delivery"
+              thumbnail={[Food1, Food2, Food3]}
+              redirect="https://oliveira-rosa.vercel.app"
+              description="Um site desenvolvido para Advocacia Oliveira Rosa para marketing empresarial. Desenvolvido com o framework Next.js"
+            />
+          </div>
         </section>
         <section>
           <h3>BI</h3>

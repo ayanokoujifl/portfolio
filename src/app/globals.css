@@ -106,3 +106,7 @@ ul li p {
 .shadow-text {
   filter: drop-shadow(0.8px 0.4px 1px #24e4ee);
 }
+
+.shadow-slate-text {
+  text-shadow: 1px 0.6px 0.4px #374151;
+}

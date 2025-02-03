@@ -18,6 +18,8 @@ import Cpe3 from "@/assets/projects/mobile/cpe/cpe-3.jpg"
 import Cpe4 from "@/assets/projects/mobile/cpe/cpe-4.jpg"
 import Cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
 
+import Excel from "@/assets/projects/BI/excel.png"
+
 export default function Projects() {
   return (
     <>
@@ -76,11 +78,33 @@ export default function Projects() {
             />
           </div>
         </section>
-        <section>
+        <section className="flex flex-col py-4 bg-gray-100 px-5 mb-4">
           <h3>BI</h3>
+          <div className="flex flex-1 flex-wrap justify-center  gap-4 lg:gap-8">
+            <Card
+              title="Excel - Dashboard"
+              description="Excel Dashboard, for portfolio demonstration"
+              thumbnail={Excel}
+              redirect="../../../assets/projects/BI/demonstracao.xlsm"
+            />
+          </div>
         </section>
-        <section>
+        <section className="flex flex-col py-4 bg-gray-100 px-5 mb-4">
           <h3>3D</h3>
+          <div>
+            <div>
+              <p className="text-xs text-slate-600 select-none">
+                This is an Atom modeled in 3D to represent the
+                <span className="text-cyan-500 font-fira font-bold">
+                  {" "}
+                  {"<Dev Atomic/>"}
+                </span>
+              </p>
+              <video autoPlay loop muted width={500} preload="none">
+                <source src="/animation.webm" type="video/mp4" />
+              </video>
+            </div>
+          </div>
         </section>
       </main>
     </>

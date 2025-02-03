@@ -53,8 +53,8 @@ export default function Projects() {
             <MobileCard
               title="food delivery"
               thumbnail={[Food1, Food2, Food3]}
-              redirect="https://oliveira-rosa.vercel.app"
-              description="Um site desenvolvido para Advocacia Oliveira Rosa para marketing empresarial. Desenvolvido com o framework Next.js"
+              redirect="../../../assets/projects/mobile/food/application-ce3fa8c8-e8dd-4c3a-938b-1464f94a614f.apk"
+              description="Aplicativo desenvolvido para catálogo e delivery de alimentos. Desenvolvido com React Native."
             />
           </div>
         </section>

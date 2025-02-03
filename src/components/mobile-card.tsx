@@ -21,7 +21,7 @@ type Props = {
 export function MobileCard({ title, description, thumbnail, redirect }: Props) {
   const [isDialogVisible, setIsDialogVisible] = useState(false)
 
-  const dialogRef = useRef(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
 
   return (
     <>
@@ -47,7 +47,7 @@ export function MobileCard({ title, description, thumbnail, redirect }: Props) {
             </h6>
           </div>
         </DialogTrigger>
-        <DialogContent className="bg-slate-100" ref={dialogRef}>
+        <DialogContent className="bg-slate-100 rounded" ref={dialogRef}>
           <DialogHeader>
             <DialogTitle className="text-lg text-cyan-600 capitalize shadow-slate-text">
               {title}
@@ -55,38 +55,27 @@ export function MobileCard({ title, description, thumbnail, redirect }: Props) {
           </DialogHeader>
           <DialogDescription asChild>
             <div>
-              <div>{description}</div>
+              <div className="mb-3 text-slate-700">{description}</div>
               <div className="flex flex-1 gap-8 justify-center">
                 {thumbnail.map((image, index) => (
-                  <Popover
-                    key={index}
-                    onOpenChange={() => {
-                      dialogRef.style.opacity = "0.3"
-                    }}
-                  >
-                    <PopoverTrigger asChild>
-                      <Image
-                        src={image}
-                        alt={title}
-                        className="w-32 object-contain"
-                      />
-                    </PopoverTrigger>
-                    <PopoverContent className="bg-slate-300 justify-center flex items-center w-72 absolute bottom-1/2">
-                      <Image
-                        src={image}
-                        alt={title}
-                        className="object-contain h-full"
-                      />
-                    </PopoverContent>
-                  </Popover>
+                  <Image
+                    src={image}
+                    alt={title}
+                    className="w-32 object-contain"
+                  />
                 ))}
               </div>
-              <p
-                onClick={() => window.open(redirect, "_blank")}
-                className="text-center text-slate-900 cursor-pointer hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold select-none mt-4"
+              <a
+                href={redirect}
+                target="_blank"
+                rel="noopener noreferrer"
+                download={
+                  redirect.endsWith(".apk") ? "food-delivery.apk" : undefined
+                }
+                className="text-center text-slate-900 cursor-pointer hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold select-none mt-4 w-full block"
               >
                 Faça o download do app aqui
-              </p>
+              </a>
             </div>
           </DialogDescription>
         </DialogContent>

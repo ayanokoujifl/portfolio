@@ -54,7 +54,7 @@ export default function Projects() {
           </div>
         </section>
         <section className="flex flex-col py-4 bg-gray-100 px-5 mb-4">
-          <h3>Mobile</h3>
+          <h3>Aplicações móveis</h3>
           <p className="text-xs text-gray-600 mb-3">
             Tenho experiência do design à publicação dos apps nas lojas de
             aplicativos, experiência adquirida no Comando de Policiamento

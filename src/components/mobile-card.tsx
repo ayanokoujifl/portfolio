@@ -10,6 +10,7 @@ import {
 } from "./ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 import { useRef, useState } from "react"
+import { Download } from "lucide-react"
 
 type Props = {
   title: string
@@ -71,9 +72,13 @@ export function MobileCard({ title, description, thumbnail, redirect }: Props) {
                 download={
                   redirect.endsWith(".apk") ? "food-delivery.apk" : undefined
                 }
-                className="text-center text-slate-900 cursor-pointer hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold select-none mt-4 w-full block"
+                className="text-center text-slate-900 cursor-pointer hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold select-none mt-4 w-full flex items-center justify-center gap-2"
               >
-                Faça o download do app aqui
+                Download
+                <span>
+                  {" "}
+                  <Download size={16} />
+                </span>
               </a>
             </div>
           </DialogDescription>

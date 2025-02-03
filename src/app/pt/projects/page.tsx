@@ -12,6 +12,12 @@ import Food1 from "@/assets/projects/mobile/food/food-1.jpg"
 import Food2 from "@/assets/projects/mobile/food/food-2.jpg"
 import Food3 from "@/assets/projects/mobile/food/food-3.jpg"
 
+import Cpe1 from "@/assets/projects/mobile/cpe/cpe-1.jpg"
+import Cpe2 from "@/assets/projects/mobile/cpe/cpe-2.jpg"
+import Cpe3 from "@/assets/projects/mobile/cpe/cpe-3.jpg"
+import Cpe4 from "@/assets/projects/mobile/cpe/cpe-4.jpg"
+import Cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
+
 export default function Projects() {
   return (
     <>
@@ -20,10 +26,10 @@ export default function Projects() {
         <h1 className="text-center text-2xl font-extrabold text-cyan-600 font-fira tracking-wide shadow-text">
           Veja meus projetos
         </h1>
-        <section className="flex flex-col py-4 bg-gray-100 px-5">
+        <section className="flex flex-col py-4 bg-gray-100 px-5 mb-4">
           <h3>Web</h3>
           <p className="text-xs text-gray-600 mb-3">
-            Tenho muitas aplicações web, mas vou mostrar apenas algumas delas
+            Tenho diversas aplicações web, mas vou mostrar apenas algumas delas
             como demonstração.
           </p>
           <div className="flex flex-1 flex-wrap justify-center  gap-4 lg:gap-8">
@@ -47,14 +53,26 @@ export default function Projects() {
             />
           </div>
         </section>
-        <section>
+        <section className="flex flex-col py-4 bg-gray-100 px-5 mb-4">
           <h3>Mobile</h3>
+          <p className="text-xs text-gray-600 mb-3">
+            Tenho experiência do design à publicação dos apps nas lojas de
+            aplicativos, experiência adquirida no Comando de Policiamento
+            Especializado (CPE). Aqui vão alguns exemplos de apps desenvolvidos
+            por mim
+          </p>
           <div className="flex flex-1 flex-wrap justify-center  gap-4 lg:gap-8">
             <MobileCard
               title="food delivery"
               thumbnail={[Food1, Food2, Food3]}
               redirect="../../../assets/projects/mobile/food/application-ce3fa8c8-e8dd-4c3a-938b-1464f94a614f.apk"
-              description="Aplicativo desenvolvido para catálogo e delivery de alimentos. Desenvolvido com React Native."
+              description="Aplicativo desenvolvido para catálogo e delivery de alimentos.Contém funcionalidades de seleção de categoria, adição de múltiplos alimentos, storage de dados referentes a pedidos na sacola de compras, por fim a função de enviar o pedido via Whatsapp para o número da loja. Desenvolvido com React Native."
+            />
+            <MobileCard
+              title="CPE"
+              thumbnail={[Cpe1, Cpe2, Cpe3, Cpe4, Cpe5]}
+              redirect="https://play.google.com/store/apps/details?id=com.app.cpe"
+              description="Este aplicativo é restrito para uso militar, contém funcionalidades estatísticas e relatórios do Comando de Policiamento Especializado, é um projeto que mantenho desde 2023 e sou o único desenvolvedor responsável por esse projeto. Não posso disponilibizar acesso total ao aplicativo para terceiros pois contém informações sigilosas. Foi também desenvolvido com React Native e Expo."
             />
           </div>
         </section>

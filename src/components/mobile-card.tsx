@@ -21,8 +21,6 @@ type Props = {
 export function MobileCard({ title, description, thumbnail, redirect }: Props) {
   const [isDialogVisible, setIsDialogVisible] = useState(false)
 
-  const dialogRef = useRef<HTMLDivElement>(null)
-
   return (
     <>
       <Dialog open={isDialogVisible} onOpenChange={setIsDialogVisible}>
@@ -47,7 +45,7 @@ export function MobileCard({ title, description, thumbnail, redirect }: Props) {
             </h6>
           </div>
         </DialogTrigger>
-        <DialogContent className="bg-slate-100 rounded" ref={dialogRef}>
+        <DialogContent className="bg-slate-100 rounded flex flex-1 flex-col justify-center items-center w-2/3">
           <DialogHeader>
             <DialogTitle className="text-lg text-cyan-600 capitalize shadow-slate-text">
               {title}
@@ -62,6 +60,7 @@ export function MobileCard({ title, description, thumbnail, redirect }: Props) {
                     src={image}
                     alt={title}
                     className="w-32 object-contain"
+                    key={index}
                   />
                 ))}
               </div>

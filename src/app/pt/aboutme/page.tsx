@@ -2,7 +2,7 @@
 
 import { AtomicIcon } from "@/components/atomicIcon"
 import { Header } from "@/components/header"
-import { Github, Instagram, Linkedin } from "lucide-react"
+import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react"
 
 export default function AboutMe() {
   return (
@@ -260,6 +260,22 @@ export default function AboutMe() {
             >
               <Linkedin />
               <span>luis-gustavo-dev</span>
+            </a>
+            <a
+              href="mailto:devatomicjourney@gmail.com"
+              className="flex items-center gap-0.5 text-slate-400 hover:text-red-600 hover:font-bold duration-100 ease-in transition-colors cursor-pointer"
+              target="_blank"
+            >
+              <Mail />
+              <span>@devatomicjourney</span>
+            </a>
+            <a
+              href="https://wa.me/5538997569902?text=Ol%C3%A1%2C%20tudo%20bem%3F"
+              className="flex items-center gap-0.5 text-slate-400 hover:text-green-500 hover:font-bold duration-100 ease-in transition-colors cursor-pointer"
+              target="_blank"
+            >
+              <Phone />
+              <span>Luís Gustavo</span>
             </a>
           </div>
         </section>

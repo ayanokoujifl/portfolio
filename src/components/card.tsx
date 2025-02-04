@@ -17,6 +17,8 @@ export function Card({ title, thumbnail, redirect, description }: Props) {
         download={
           redirect.endsWith(".xlsm")
             ? "dashboard-demonstrativo.xlsm"
+            : redirect.endsWith(".pbix")
+            ? "dashboard-demonstrativo.pbix"
             : undefined
         }
         className="relative card-wrapper w-full md:w-[28rem] "
@@ -27,7 +29,7 @@ export function Card({ title, thumbnail, redirect, description }: Props) {
             alt={title}
             className="h-full absolute top-0"
           />
-          <h6 className="text-xs font-bold text-gray-300  absolute bottom-0 selection:bg-transparent selection:text-cyan-800 cursor-default shadow-text">
+          <h6 className="text-sm font-bold text-gray-100  absolute bottom-0 selection:bg-transparent selection:text-cyan-800 cursor-default shadow-text">
             {title}
           </h6>
         </div>

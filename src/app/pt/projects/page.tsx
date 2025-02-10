@@ -103,18 +103,32 @@ export default function Projects() {
         </section>
         <section className="flex flex-col py-4 bg-gray-100 px-5 mb-4">
           <h3>3D</h3>
-          <p className="text-xs text-slate-600 select-none">
-            Esse é um Átomo modelado em 3D para representar a marca
-            <span className="text-cyan-500 font-fira font-bold">
-              {" "}
-              {"<Dev Atomic/>"}
-            </span>
-          </p>
-          <div className="flex flex-1 flex-wrap justify-center">
+          <div className="flex flex-1 flex-wrap justify-center items-center gap-4 lg:gap-8">
             <div>
-              <video autoPlay loop muted width={500} preload="none">
-                <source src="/animation.webm" type="video/mp4" />
-              </video>
+              <p className="text-xs text-slate-600 select-none">
+                Esse é um Átomo modelado em 3D para representar a marca
+                <span className="text-cyan-500 font-fira font-bold">
+                  {" "}
+                  {"<Dev Atomic/>"}
+                </span>
+              </p>
+              <div>
+                <video autoPlay loop muted width={500} preload="none">
+                  <source src="/animation.webm" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+            <div>
+              <div>
+                <p className="text-xs text-slate-600 select-none">
+                  Robô modelado em 3D
+                </p>
+                <div>
+                  <video autoPlay loop muted width={500} preload="none">
+                    <source src="/robot-animation.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
             </div>
           </div>
         </section>

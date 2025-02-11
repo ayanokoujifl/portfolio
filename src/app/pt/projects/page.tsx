@@ -132,6 +132,23 @@ export default function Projects() {
             </div>
           </div>
         </section>
+        <hr />
+        <section className="flex flex-col py-10 bg-gray-100 px-8 mb-4">
+          <h3>Backend</h3>
+          <p className="text-sm text-slate-600 select-none">
+            Meus projetos backend feitos com Java - Spring Boot se encontram em
+            repositórios privados (na sua maioria) no meu{" "}
+            <a
+              href="https://github.com/ayanokoujifl"
+              className="text-slate-900 font-medium underline"
+            >
+              github
+            </a>
+            . Consistem, no geral, em{" "}
+            <span className="text-cyan-500">microserviços</span> com
+            autenticação JWT
+          </p>
+        </section>
       </main>
     </>
   )

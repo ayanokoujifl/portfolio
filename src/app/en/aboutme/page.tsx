@@ -12,10 +12,10 @@ export default function AboutMe() {
         <h1 className="text-center text-3xl font-bold font-fira loop-gradient">
           Who I am
         </h1>
-        <section className="grid grid-cols-1 md:grid-cols-[1fr_1fr]  mt-6 gap-8 md:gap-2">
+        <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr]  mt-6 gap-8 md:gap-2">
           <div className="flex flex-col flex-1 items-center w-full">
             <h3 className="text-center text-xl font-bold">Hard Skills</h3>
-            <ul className=" flex flex-col gap-2 justify-center">
+            <ul className=" gap-2 justify-center grid grid-cols-1 md:grid-cols-2 md:gap-x-4">
               <li className="flex flex-col w-72">
                 <p className="flex items-center">
                   <AtomicIcon />
@@ -74,6 +74,24 @@ export default function AboutMe() {
                 <span className="text-xs text-slate-600">
                   (Docker, Kafka, Kubernetes)
                 </span>
+              </li>
+              <li className="flex flex-col w-72">
+                <p className="flex items-center">
+                  <AtomicIcon />
+                  Clean Code, SOLID
+                </p>
+              </li>
+              <li className="flex flex-col w-72">
+                <p className="flex items-center">
+                  <AtomicIcon />
+                  Design Patterns
+                </p>
+              </li>
+              <li className="flex flex-col w-72">
+                <p className="flex items-center">
+                  <AtomicIcon />
+                  Clean Architeture
+                </p>
               </li>
             </ul>
           </div>

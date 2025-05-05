@@ -21,6 +21,8 @@ import Cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
 import Excel from "@/assets/projects/BI/excel.png"
 import PowerBI from "@/assets/projects/BI/powerbi.jpg"
 
+import Spring from "@/assets/projects/spring.png"
+
 export default function Projects() {
   return (
     <>
@@ -135,6 +137,13 @@ export default function Projects() {
         <hr />
         <section className="flex flex-col py-10 bg-gray-100 px-8 mb-4">
           <h3>Backend</h3>
+          <Card
+            title="Java - Spring Boot"
+            thumbnail={Spring}
+            redirect="https://github.com/ayanokoujifl?tab=repositories&q=&type=public&language=java&sort="
+            description="Projetos feitos com Java - Spring Boot se encontram no meu github."
+          />
+
           <p className="text-sm text-slate-600 select-none">
             Meus projetos backend feitos com Java - Spring Boot se encontram em
             repositórios privados (na sua maioria) no meu{" "}

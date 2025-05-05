@@ -74,8 +74,15 @@ export default function AboutMe() {
                   CI/CD
                 </p>
                 <span className="text-xs text-slate-600">
-                  (Docker, Kafka, Kubernetes)
+                  (Docker, Kubernetes)
                 </span>
+              </li>{" "}
+              <li className="flex flex-col w-72">
+                <p className="flex items-center">
+                  <AtomicIcon />
+                  Mensageria
+                </p>
+                <span className="text-xs text-slate-600">(Apache Kafka)</span>
               </li>
               <li className="flex flex-col w-72">
                 <p className="flex items-center">

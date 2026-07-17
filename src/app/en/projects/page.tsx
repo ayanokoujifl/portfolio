@@ -1,11 +1,11 @@
 "use client"
 
 import { Card } from "@/components/card"
+import { MobileCard } from "@/components/mobile-card"
 import { Header } from "@/components/header"
 import OR from "@/assets/projects/OR.png"
 import Events from "@/assets/projects/events.png"
 import Pokedex from "@/assets/projects/pokedex.png"
-import { MobileCard } from "@/components/mobile-card"
 
 //mobile assets
 import Food1 from "@/assets/projects/mobile/food/food-1.jpg"
@@ -18,69 +18,174 @@ import Cpe3 from "@/assets/projects/mobile/cpe/cpe-3.jpg"
 import Cpe4 from "@/assets/projects/mobile/cpe/cpe-4.jpg"
 import Cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
 
+import Excel from "@/assets/projects/BI/excel.png"
+import PowerBI from "@/assets/projects/BI/powerbi.jpg"
+import Spring from "@/assets/projects/spring.png"
+
 export default function Projects() {
   return (
     <>
-      <main className="flex flex-1 flex-col min-h-screen">
+      <main className="flex flex-1 flex-col min-h-screen bg-slate-50">
         <Header />
-        <h1 className="text-center text-2xl font-extrabold text-cyan-600 font-fira tracking-wide">
-          Look at my projects
-        </h1>
-        <section className="flex flex-col py-4 bg-gray-100 px-5">
-          <h3>Web</h3>
-          <p className="text-xs text-gray-600 mb-3">
-            I've done a lot of web projects, but I'll just show some of them as
-            a demonstration
+        
+        <div className="flex flex-col items-center justify-center py-12 px-5 bg-gradient-to-b from-slate-100 to-slate-50">
+          <h1 className="text-center text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-700 font-fira tracking-tight mb-4 drop-shadow-sm">
+            My Projects Portfolio
+          </h1>
+          <p className="text-slate-500 max-w-2xl text-center text-sm md:text-base">
+            Here you will find a curated selection of some of the best projects I've built, ranging from scalable web applications to performant mobile apps.
           </p>
-          <div className="flex flex-1 flex-wrap justify-center  gap-4 lg:gap-8">
-            <Card
-              title="Advocacia Oliveira Rosa"
-              thumbnail={OR}
-              redirect="https://oliveira-rosa.vercel.app"
-              description="A Website developed for Advocacia Oliveira Rosa to enterprise marketing. Developed with framework Next.js"
-            />
-            <Card
-              title="Platform for video class"
-              thumbnail={Events}
-              redirect="https://event-platform-s8sv.vercel.app"
-              description="A Website developed for streaming of videos classes. I developed that when I was studying in the IFMG-sje, on the year 2022. Developed with React.js"
-            />
-            <Card
-              title="Pokedex"
-              thumbnail={Pokedex}
-              redirect="https://pokedex-teal-kappa.vercel.app"
-              description="This is a Pokedex, developed when I was learning how to consume APIs, on the year 2021. Developed with Angular.js"
-            />
+        </div>
+
+        <section className="flex flex-col py-12 px-5 md:px-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="flex items-center gap-3 mb-8">
+              <h3 className="text-3xl font-bold text-slate-800">Web Development</h3>
+              <div className="flex-1 h-px bg-slate-200"></div>
+            </div>
+            
+            <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10">
+              <Card
+                title="Advocacia Oliveira Rosa"
+                thumbnail={OR}
+                redirect="https://oliveira-rosa.vercel.app"
+                description="A landing page built for Advocacia Oliveira Rosa for enterprise marketing. Developed with Next.js focusing on SEO and high performance."
+              />
+              <Card
+                title="Video Class Platform"
+                thumbnail={Events}
+                redirect="https://event-platform-s8sv.vercel.app"
+                description="A streaming platform built for video classes during my studies at IFMG-SJE in 2022. Features include real-time interactions and modern UI. Developed with React.js."
+              />
+              <Card
+                title="Pokedex"
+                thumbnail={Pokedex}
+                redirect="https://pokedex-teal-kappa.vercel.app"
+                description="A comprehensive Pokedex application built while learning to consume external APIs in 2021. Features detailed Pokemon stats. Developed with Angular.js."
+              />
+            </div>
           </div>
         </section>
-        <section className="flex flex-col py-4 bg-gray-100 px-5 mb-4">
-          <h3>Mobile</h3>
-          <p className="text-xs text-gray-600 mb-3">
-            I have experience from designing to publishing applications in
-            stores. applications, experience acquired in the Police Command
-            Specialized (CPE). Here are some examples of applications developed
-            for me.
-          </p>
-          <div className="flex flex-1 flex-wrap justify-center  gap-4 lg:gap-8">
-            <MobileCard
-              title="food delivery"
-              thumbnail={[Food1, Food2, Food3]}
-              redirect="../../../assets/projects/mobile/food/application-ce3fa8c8-e8dd-4c3a-938b-1464f94a614f.apk"
-              description="Application developed for catalog and food delivery. Contains functionality for category selection, addition of multiple foods, storage of data relating to orders in the shopping bag, and finally the function of sending the order via Whatsapp to the store number. Developed with React Native."
-            />
-            <MobileCard
-              title="CPE"
-              thumbnail={[Cpe1, Cpe2, Cpe3, Cpe4, Cpe5]}
-              redirect="https://play.google.com/store/apps/details?id=com.app.cpe"
-              description="This application is restricted for military use, contains statistical functionalities and reports from the Specialized Policing Command, it is a project that I have maintained since 2023 and I am the only developer responsible for this project. I cannot provide full access to the application to third parties as it contains confidential information. It was also developed with React Native and Expo."
-            />
+
+        <section className="flex flex-col py-12 px-5 md:px-12 bg-slate-100/50 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="flex items-center gap-3 mb-6">
+              <h3 className="text-3xl font-bold text-slate-800">Mobile Applications</h3>
+              <div className="flex-1 h-px bg-slate-200"></div>
+            </div>
+            <p className="text-sm md:text-base text-slate-600 mb-10 max-w-3xl">
+              I have deep experience covering the entire mobile development lifecycle—from UI design and architecture to App Store publishing. These examples include apps developed for the Specialized Policing Command (CPE) and consumer services.
+            </p>
+            
+            <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10">
+              <MobileCard
+                title="Food Delivery"
+                thumbnail={[Food1, Food2, Food3]}
+                redirect="../../../assets/projects/mobile/food/application-ce3fa8c8-e8dd-4c3a-938b-1464f94a614f.apk"
+                description="A complete catalog and food delivery application. It allows users to browse categories, add items to a cart, review the summary, and send the order directly via WhatsApp. Built with React Native."
+              />
+              <MobileCard
+                title="CPE Dashboard"
+                thumbnail={[Cpe1, Cpe2, Cpe3, Cpe4, Cpe5]}
+                redirect="https://play.google.com/store/apps/details?id=com.app.cpe"
+                description="A restricted-use app for the military featuring statistical analysis and reporting for the Specialized Policing Command. I am the sole maintainer since 2023. Built securely with React Native and Expo."
+              />
+            </div>
           </div>
         </section>
-        <section>
-          <h3>BI</h3>
+
+        <section className="flex flex-col py-12 px-5 md:px-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 fill-mode-both">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="flex items-center gap-3 mb-6">
+              <h3 className="text-3xl font-bold text-slate-800">Business Intelligence</h3>
+              <div className="flex-1 h-px bg-slate-200"></div>
+            </div>
+            <p className="text-sm md:text-base text-slate-600 mb-10 max-w-3xl">
+              I've built two graphic visualizations to demonstrate my skills in dashboard creation using Excel and PowerBI.
+            </p>
+            
+            <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10">
+              <Card
+                title="Excel - Dashboard"
+                thumbnail={Excel}
+                redirect="../../../assets/projects/BI/demonstracao.xlsm"
+                description="Excel dashboard, demonstrative project for portfolio."
+              />
+              <Card
+                title="Power BI - Dashboard"
+                thumbnail={PowerBI}
+                redirect="../../../assets/projects/BI/demonstrativo.pbix"
+                description="Power BI dashboard, demonstrative project for portfolio."
+              />
+            </div>
+          </div>
         </section>
-        <section>
-          <h3>3D</h3>
+
+        <section className="flex flex-col py-12 px-5 md:px-12 bg-slate-100/50 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both mb-12">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="flex items-center gap-3 mb-6">
+              <h3 className="text-3xl font-bold text-slate-800">3D Projects</h3>
+              <div className="flex-1 h-px bg-slate-200"></div>
+            </div>
+            <div className="flex flex-1 flex-wrap justify-center items-center gap-8 lg:gap-12 mt-6">
+              <div className="bg-white p-4 rounded-xl shadow-lg border border-slate-200">
+                <p className="text-sm text-slate-600 select-none mb-3 font-medium text-center">
+                  A 3D modeled Atom representing the
+                  <span className="text-cyan-500 font-fira font-bold ml-1">
+                    {"<Dev Atomic/>"}
+                  </span> brand
+                </p>
+                <div className="rounded-lg overflow-hidden border border-slate-100 shadow-inner">
+                  <video autoPlay loop muted width={400} preload="none" className="hover:scale-105 transition-transform duration-500">
+                    <source src="/animation.webm" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-xl shadow-lg border border-slate-200">
+                <p className="text-sm text-slate-600 select-none mb-3 font-medium text-center">
+                  3D modeled Robot
+                </p>
+                <div className="rounded-lg overflow-hidden border border-slate-100 shadow-inner">
+                  <video autoPlay loop muted width={400} preload="none" className="hover:scale-105 transition-transform duration-500">
+                    <source src="/robot-animation.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="flex flex-col py-12 px-5 md:px-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 fill-mode-both">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="flex items-center gap-3 mb-6">
+              <h3 className="text-3xl font-bold text-slate-800">Backend</h3>
+              <div className="flex-1 h-px bg-slate-200"></div>
+            </div>
+            
+            <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10 mb-8">
+              <Card
+                title="Java - Spring Boot"
+                thumbnail={Spring}
+                redirect="https://github.com/ayanokoujifl?tab=repositories&q=&type=public&language=java&sort="
+                description="My Java - Spring Boot projects can be found on my Github."
+              />
+            </div>
+            
+            <p className="text-sm md:text-base text-slate-600 select-none text-center max-w-4xl mx-auto bg-slate-100 p-6 rounded-xl border border-slate-200">
+              My backend projects built with Java - Spring Boot are mostly in private repositories on my{" "}
+              <a
+                href="https://github.com/ayanokoujifl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-600 hover:text-cyan-500 font-bold underline transition-colors"
+              >
+                github
+              </a>
+              . They generally consist of{" "}
+              <span className="text-cyan-600 font-bold">microservices</span> with
+              JWT authentication.
+            </p>
+          </div>
         </section>
       </main>
     </>

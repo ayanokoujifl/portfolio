@@ -4,13 +4,11 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogOverlay,
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog"
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
-import { useRef, useState } from "react"
-import { Download } from "lucide-react"
+import { useState } from "react"
+import { Download, ChevronRight } from "lucide-react"
 
 type Props = {
   title: string
@@ -25,63 +23,72 @@ export function MobileCard({ title, description, thumbnail, redirect }: Props) {
   return (
     <>
       <Dialog open={isDialogVisible} onOpenChange={setIsDialogVisible}>
-        <DialogTrigger
-          className="relative card-wrapper w-full md:w-[32rem] "
-          asChild
-          onClick={() => setIsDialogVisible(true)}
-        >
-          <div className="flex flex-col items-center border-2 border-gray-700 rounded aspect-video justify-center cursor-pointer relative card-front">
-            <div className="flex flex-1 h-full w-full">
-              {thumbnail.map((image, index) => (
-                <Image
-                  src={image}
-                  alt={title}
-                  className="w-1/3 h-full"
-                  key={index}
-                />
-              ))}
+        <DialogTrigger asChild>
+          <div
+            className="relative group w-full max-w-[16rem] md:max-w-[20rem] rounded-xl overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-all duration-500 cursor-pointer aspect-[9/16]"
+            onClick={() => setIsDialogVisible(true)}
+          >
+            <div className="flex flex-col items-center border-2 border-gray-700/50 rounded-xl h-full justify-center relative overflow-hidden bg-gray-900">
+              <Image
+                src={thumbnail[0]}
+                alt={title}
+                className="h-full w-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-in-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/30 to-transparent"></div>
+              
+              <div className="absolute bottom-6 flex flex-col items-center z-10 transition-transform duration-500 group-hover:-translate-y-2">
+                <h6 className="text-lg font-bold text-white selection:bg-transparent selection:text-cyan-800 cursor-default shadow-text text-center px-4">
+                  {title}
+                </h6>
+                <div className="flex items-center gap-1 mt-2 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="text-xs font-semibold uppercase tracking-wider">Ver detalhes</span>
+                  <ChevronRight size={14} />
+                </div>
+              </div>
             </div>
-            <h6 className="text-xs font-bold text-gray-300  absolute bottom-0 selection:bg-transparent selection:text-cyan-800 cursor-default shadow-text">
-              {title}
-            </h6>
           </div>
         </DialogTrigger>
-        <DialogContent className="bg-slate-100 rounded flex flex-1 flex-col justify-center items-center w-2/3">
-          <DialogHeader>
-            <DialogTitle className="text-lg text-cyan-600 capitalize shadow-slate-text">
+        <DialogContent className="bg-slate-900 border-gray-800 rounded-xl flex flex-col w-[95%] md:max-w-4xl overflow-hidden p-0 gap-0">
+          <DialogHeader className="p-6 pb-4 border-b border-gray-800 bg-slate-950/50">
+            <DialogTitle className="text-2xl text-cyan-400 capitalize font-bold tracking-wide">
               {title}
             </DialogTitle>
           </DialogHeader>
-          <DialogDescription asChild>
-            <div>
-              <div className="mb-3 text-slate-700">{description}</div>
-              <div className="flex flex-1 gap-8 justify-center">
-                {thumbnail.map((image, index) => (
-                  <Image
-                    src={image}
-                    alt={title}
-                    className="w-32 object-contain"
-                    key={index}
-                  />
-                ))}
+          <div className="p-6 overflow-y-auto max-h-[85vh]">
+            <DialogDescription asChild>
+              <div className="flex flex-col gap-8 text-gray-300">
+                <div className="text-sm md:text-base leading-relaxed">{description}</div>
+                
+                <div className="w-full">
+                  <p className="text-xs text-gray-500 mb-4 uppercase tracking-widest font-bold">Screenshots</p>
+                  <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
+                    {thumbnail.map((image, index) => (
+                      <div key={index} className="snap-center shrink-0 w-[65%] md:w-[40%] lg:w-[30%] relative rounded-xl overflow-hidden border border-gray-800 shadow-xl bg-black">
+                        <Image
+                          src={image}
+                          alt={`${title} screenshot ${index + 1}`}
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  href={redirect}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download={
+                    redirect.endsWith(".apk") ? `${title.replace(/\s+/g, '-').toLowerCase()}.apk` : undefined
+                  }
+                  className="flex items-center justify-center gap-2 w-full md:w-auto md:self-center py-4 px-8 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-colors duration-300 mt-2 shadow-lg hover:shadow-cyan-500/25"
+                >
+                  <Download size={20} />
+                  <span>Baixar Aplicativo</span>
+                </a>
               </div>
-              <a
-                href={redirect}
-                target="_blank"
-                rel="noopener noreferrer"
-                download={
-                  redirect.endsWith(".apk") ? "food-delivery.apk" : undefined
-                }
-                className="text-center text-slate-900 cursor-pointer hover:text-cyan-500 transition-colors ease-in-out duration-150 hover:font-bold select-none mt-4 w-full flex items-center justify-center gap-2"
-              >
-                Download
-                <span>
-                  {" "}
-                  <Download size={16} />
-                </span>
-              </a>
-            </div>
-          </DialogDescription>
+            </DialogDescription>
+          </div>
         </DialogContent>
       </Dialog>
     </>

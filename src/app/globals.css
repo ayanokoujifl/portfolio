@@ -110,3 +110,19 @@ ul li p {
 .shadow-slate-text {
   text-shadow: 1px 0.6px 0.4px #374151;
 }
+
+/* Custom Scrollbar for Carousel */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #374151;
+  border-radius: 20px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #4b5563;
+}

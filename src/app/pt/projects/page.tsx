@@ -1,11 +1,24 @@
 import { Card } from "@/components/card"
 import { MobileCard } from "@/components/mobile-card"
 import { Header } from "@/components/header"
+
+// Web assets
+import WalletAgent from "@/assets/projects/wallet-agent.png"
+import MinhaEscalaLP from "@/assets/projects/minha-escala.png"
 import OR from "@/assets/projects/OR.png"
 import Events from "@/assets/projects/events.png"
 import Pokedex from "@/assets/projects/pokedex.png"
 
-// mobile assets
+// Mobile assets - Minha Escala
+import MinhaEscalaHome from "@/assets/projects/mobile/minhaescala/home-screen.jpeg"
+import MinhaEscalaFinancial from "@/assets/projects/mobile/minhaescala/home-financial.jpeg"
+import MinhaEscalaPlantao from "@/assets/projects/mobile/minhaescala/plantao-form.jpeg"
+import MinhaEscalaCompromissoForm from "@/assets/projects/mobile/minhaescala/compromisso-form.jpeg"
+import MinhaEscalaCompromissoSheet from "@/assets/projects/mobile/minhaescala/compromisso-bottom-sheet.jpeg"
+import MinhaEscalaOcorrenciasList from "@/assets/projects/mobile/minhaescala/ocorrencias-list.jpeg"
+import MinhaEscalaOcorrenciaSheet from "@/assets/projects/mobile/minhaescala/ocorrencia-bottom-sheet.jpeg"
+
+// Mobile assets - Food & CPE
 import Food1 from "@/assets/projects/mobile/food/food-1.jpg"
 import Food2 from "@/assets/projects/mobile/food/food-2.jpg"
 import Food3 from "@/assets/projects/mobile/food/food-3.jpg"
@@ -16,6 +29,7 @@ import Cpe3 from "@/assets/projects/mobile/cpe/cpe-3.jpg"
 import Cpe4 from "@/assets/projects/mobile/cpe/cpe-4.jpg"
 import Cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
 
+// BI & Backend assets
 import Excel from "@/assets/projects/BI/excel.png"
 import PowerBI from "@/assets/projects/BI/powerbi.jpg"
 import Spring from "@/assets/projects/spring.png"
@@ -43,6 +57,18 @@ export default function Projects() {
             </div>
             
             <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10">
+              <Card
+                title="Wallet Agent"
+                thumbnail={WalletAgent}
+                redirect="https://wallet-agent.ayanokoujifl.com?utm_source=portfolio&utm_medium=web&utm_campaign=portfolio_showcase"
+                description="Landing page desenvolvida para o Wallet Agent, uma plataforma inteligente de gestão financeira e automação com IA. Projetada com Next.js focando em alta conversão e design moderno."
+              />
+              <Card
+                title="Minha Escala - Landing Page"
+                thumbnail={MinhaEscalaLP}
+                redirect="https://minha-escala.ayanokoujifl.com?utm_source=portfolio&utm_medium=web&utm_campaign=portfolio_showcase"
+                description="Landing page oficial do aplicativo Minha Escala, apresentando recursos de gestão de plantões, finanças e ocorrências para profissionais de segurança e plantonistas."
+              />
               <Card
                 title="Advocacia Oliveira Rosa"
                 thumbnail={OR}
@@ -72,21 +98,37 @@ export default function Projects() {
               <div className="flex-1 h-px bg-slate-200"></div>
             </div>
             <p className="text-sm md:text-base text-slate-600 mb-10 max-w-3xl">
-              Tenho sólida experiência abrangendo todo o ciclo de vida do desenvolvimento móvel — desde a concepção e design da interface até a publicação nas lojas de aplicativos. Os projetos incluem apps desenvolvidos para o Comando de Policiamento Especializado (CPE) e serviços ao consumidor.
+              Tenho sólida experiência abrangendo todo o ciclo de vida do desenvolvimento móvel — desde a concepção e design da interface até a publicação nas lojas de aplicativos. Os projetos incluem apps desenvolvidos para o Comando de Policiamento Especializado (CPE), gestão de plantões e serviços ao consumidor.
             </p>
             
             <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10">
               <MobileCard
-                title="Food Delivery"
-                thumbnail={[Food1, Food2, Food3]}
-                redirect="/downloads/food-delivery.apk"
-                description="Aplicativo completo para catálogo e delivery de alimentos. Permite navegação por categorias, adição de múltiplos itens ao carrinho e envio direto do pedido via WhatsApp. Desenvolvido com React Native."
+                title="Minha Escala"
+                thumbnail={[
+                  MinhaEscalaHome,
+                  MinhaEscalaFinancial,
+                  MinhaEscalaPlantao,
+                  MinhaEscalaCompromissoForm,
+                  MinhaEscalaCompromissoSheet,
+                  MinhaEscalaOcorrenciasList,
+                  MinhaEscalaOcorrenciaSheet,
+                ]}
+                redirect="https://minha-escala.ayanokoujifl.com?utm_source=portfolio&utm_medium=mobile_card&utm_campaign=portfolio_showcase"
+                buttonLabel="Acessar Landing Page"
+                description="Aplicativo móvel robusto para gestão de escalas, plantões, controle financeiro e registro de ocorrências para profissionais de segurança e plantonistas. Desenvolvido com React Native e arquitetura modular."
               />
               <MobileCard
                 title="Dashboard CPE"
                 thumbnail={[Cpe1, Cpe2, Cpe3, Cpe4, Cpe5]}
                 redirect="https://play.google.com/store/apps/details?id=com.app.cpe"
+                buttonLabel="Ver na Google Play"
                 description="Aplicativo de uso restrito militar, apresentando análises estatísticas e relatórios para o Comando de Policiamento Especializado. Sou o único mantenedor desde 2023. Construído de forma segura com React Native e Expo."
+              />
+              <MobileCard
+                title="Food Delivery"
+                thumbnail={[Food1, Food2, Food3]}
+                redirect="/downloads/food-delivery.apk"
+                description="Aplicativo completo para catálogo e delivery de alimentos. Permite navegação por categorias, adição de múltiplos itens ao carrinho e envio direto do pedido via WhatsApp. Desenvolvido com React Native."
               />
             </div>
           </div>

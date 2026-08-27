@@ -10,16 +10,17 @@ import {
   DialogTrigger,
 } from "./ui/dialog"
 import { useState } from "react"
-import { Download, ChevronRight } from "lucide-react"
+import { Download, ChevronRight, ExternalLink } from "lucide-react"
 
 type Props = {
   title: string
   thumbnail: StaticImageData[]
   redirect: string
   description: string
+  buttonLabel?: string
 }
 
-export function MobileCard({ title, description, thumbnail, redirect }: Props) {
+export function MobileCard({ title, description, thumbnail, redirect, buttonLabel }: Props) {
   const [isDialogVisible, setIsDialogVisible] = useState(false)
 
   return (
@@ -85,8 +86,10 @@ export function MobileCard({ title, description, thumbnail, redirect }: Props) {
                   }
                   className="flex items-center justify-center gap-2 w-full md:w-auto md:self-center py-4 px-8 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-colors duration-300 mt-2 shadow-lg hover:shadow-cyan-500/25"
                 >
-                  <Download size={20} />
-                  <span>Baixar Aplicativo</span>
+                  {redirect.endsWith(".apk") ? <Download size={20} /> : <ExternalLink size={20} />}
+                  <span>
+                    {buttonLabel || (redirect.endsWith(".apk") ? "Baixar Aplicativo" : "Acessar Projeto")}
+                  </span>
                 </a>
               </div>
             </DialogDescription>

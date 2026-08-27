@@ -1,11 +1,24 @@
 import { Card } from "@/components/card"
 import { MobileCard } from "@/components/mobile-card"
 import { Header } from "@/components/header"
+
+// Web assets
+import WalletAgent from "@/assets/projects/wallet-agent.png"
+import MinhaEscalaLP from "@/assets/projects/minha-escala.png"
 import OR from "@/assets/projects/OR.png"
 import Events from "@/assets/projects/events.png"
 import Pokedex from "@/assets/projects/pokedex.png"
 
-// mobile assets
+// Mobile assets - Minha Escala
+import MinhaEscalaHome from "@/assets/projects/mobile/minhaescala/home-screen.jpeg"
+import MinhaEscalaFinancial from "@/assets/projects/mobile/minhaescala/home-financial.jpeg"
+import MinhaEscalaPlantao from "@/assets/projects/mobile/minhaescala/plantao-form.jpeg"
+import MinhaEscalaCompromissoForm from "@/assets/projects/mobile/minhaescala/compromisso-form.jpeg"
+import MinhaEscalaCompromissoSheet from "@/assets/projects/mobile/minhaescala/compromisso-bottom-sheet.jpeg"
+import MinhaEscalaOcorrenciasList from "@/assets/projects/mobile/minhaescala/ocorrencias-list.jpeg"
+import MinhaEscalaOcorrenciaSheet from "@/assets/projects/mobile/minhaescala/ocorrencia-bottom-sheet.jpeg"
+
+// Mobile assets - Food & CPE
 import Food1 from "@/assets/projects/mobile/food/food-1.jpg"
 import Food2 from "@/assets/projects/mobile/food/food-2.jpg"
 import Food3 from "@/assets/projects/mobile/food/food-3.jpg"
@@ -16,6 +29,7 @@ import Cpe3 from "@/assets/projects/mobile/cpe/cpe-3.jpg"
 import Cpe4 from "@/assets/projects/mobile/cpe/cpe-4.jpg"
 import Cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
 
+// BI & Backend assets
 import Excel from "@/assets/projects/BI/excel.png"
 import PowerBI from "@/assets/projects/BI/powerbi.jpg"
 import Spring from "@/assets/projects/spring.png"
@@ -43,6 +57,18 @@ export default function Projects() {
             </div>
             
             <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10">
+              <Card
+                title="Wallet Agent"
+                thumbnail={WalletAgent}
+                redirect="https://wallet-agent.ayanokoujifl.com?utm_source=portfolio&utm_medium=web&utm_campaign=portfolio_showcase"
+                description="Landing page built for Wallet Agent, an intelligent AI-assisted financial management and workflow platform. Developed with Next.js focusing on high conversion and modern UI."
+              />
+              <Card
+                title="Minha Escala - Landing Page"
+                thumbnail={MinhaEscalaLP}
+                redirect="https://minha-escala.ayanokoujifl.com?utm_source=portfolio&utm_medium=web&utm_campaign=portfolio_showcase"
+                description="Official landing page for the Minha Escala mobile app, presenting shift scheduling, financial analytics, and incident tracking features for shift workers and security personnel."
+              />
               <Card
                 title="Advocacia Oliveira Rosa"
                 thumbnail={OR}
@@ -72,21 +98,37 @@ export default function Projects() {
               <div className="flex-1 h-px bg-slate-200"></div>
             </div>
             <p className="text-sm md:text-base text-slate-600 mb-10 max-w-3xl">
-              I have deep experience covering the entire mobile development lifecycle—from UI design and architecture to App Store publishing. These examples include apps developed for the Specialized Policing Command (CPE) and consumer services.
+              I have deep experience covering the entire mobile development lifecycle—from UI design and architecture to App Store publishing. These examples include apps developed for the Specialized Policing Command (CPE), shift management, and consumer services.
             </p>
             
             <div className="flex flex-1 flex-wrap justify-center gap-6 lg:gap-10">
               <MobileCard
-                title="Food Delivery"
-                thumbnail={[Food1, Food2, Food3]}
-                redirect="/downloads/food-delivery.apk"
-                description="A complete catalog and food delivery application. It allows users to browse categories, add items to a cart, review the summary, and send the order directly via WhatsApp. Built with React Native."
+                title="Minha Escala"
+                thumbnail={[
+                  MinhaEscalaHome,
+                  MinhaEscalaFinancial,
+                  MinhaEscalaPlantao,
+                  MinhaEscalaCompromissoForm,
+                  MinhaEscalaCompromissoSheet,
+                  MinhaEscalaOcorrenciasList,
+                  MinhaEscalaOcorrenciaSheet,
+                ]}
+                redirect="https://minha-escala.ayanokoujifl.com?utm_source=portfolio&utm_medium=mobile_card&utm_campaign=portfolio_showcase"
+                buttonLabel="Visit Landing Page"
+                description="A comprehensive mobile app for shift workers and security forces to manage work shifts, financial projections, appointment schedules, and operational incident logs. Built with React Native."
               />
               <MobileCard
                 title="CPE Dashboard"
                 thumbnail={[Cpe1, Cpe2, Cpe3, Cpe4, Cpe5]}
                 redirect="https://play.google.com/store/apps/details?id=com.app.cpe"
+                buttonLabel="View on Google Play"
                 description="A restricted-use app for the military featuring statistical analysis and reporting for the Specialized Policing Command. I am the sole maintainer since 2023. Built securely with React Native and Expo."
+              />
+              <MobileCard
+                title="Food Delivery"
+                thumbnail={[Food1, Food2, Food3]}
+                redirect="/downloads/food-delivery.apk"
+                description="A complete catalog and food delivery application. It allows users to browse categories, add items to a cart, review the summary, and send the order directly via WhatsApp. Built with React Native."
               />
             </div>
           </div>

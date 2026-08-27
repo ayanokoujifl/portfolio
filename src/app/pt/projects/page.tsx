@@ -1,5 +1,3 @@
-"use client"
-
 import { Card } from "@/components/card"
 import { MobileCard } from "@/components/mobile-card"
 import { Header } from "@/components/header"
@@ -7,7 +5,7 @@ import OR from "@/assets/projects/OR.png"
 import Events from "@/assets/projects/events.png"
 import Pokedex from "@/assets/projects/pokedex.png"
 
-//mobile assets
+// mobile assets
 import Food1 from "@/assets/projects/mobile/food/food-1.jpg"
 import Food2 from "@/assets/projects/mobile/food/food-2.jpg"
 import Food3 from "@/assets/projects/mobile/food/food-3.jpg"
@@ -81,7 +79,7 @@ export default function Projects() {
               <MobileCard
                 title="Food Delivery"
                 thumbnail={[Food1, Food2, Food3]}
-                redirect="../../../assets/projects/mobile/food/application-ce3fa8c8-e8dd-4c3a-938b-1464f94a614f.apk"
+                redirect="/downloads/food-delivery.apk"
                 description="Aplicativo completo para catálogo e delivery de alimentos. Permite navegação por categorias, adição de múltiplos itens ao carrinho e envio direto do pedido via WhatsApp. Desenvolvido com React Native."
               />
               <MobileCard
@@ -108,13 +106,13 @@ export default function Projects() {
               <Card
                 title="Excel - Dashboard"
                 thumbnail={Excel}
-                redirect="../../../assets/projects/BI/demonstracao.xlsm"
+                redirect="/downloads/demonstracao.xlsm"
                 description="Dashboard em Excel, demonstrativo para portfólio."
               />
               <Card
                 title="Power BI - Dashboard"
                 thumbnail={PowerBI}
-                redirect="../../../assets/projects/BI/demonstrativo.pbix"
+                redirect="/downloads/demonstrativo.pbix"
                 description="Visualização gráfica em Power BI, demonstrativo para portfólio."
               />
             </div>
@@ -136,8 +134,8 @@ export default function Projects() {
                   </span>
                 </p>
                 <div className="rounded-lg overflow-hidden border border-slate-100 shadow-inner">
-                  <video autoPlay loop muted width={400} preload="none" className="hover:scale-105 transition-transform duration-500">
-                    <source src="/animation.webm" type="video/mp4" />
+                  <video autoPlay loop muted playsInline preload="metadata" width={400} className="hover:scale-105 transition-transform duration-500">
+                    <source src="/animation.webm" type="video/webm" />
                   </video>
                 </div>
               </div>
@@ -146,7 +144,7 @@ export default function Projects() {
                   Robô modelado em 3D
                 </p>
                 <div className="rounded-lg overflow-hidden border border-slate-100 shadow-inner">
-                  <video autoPlay loop muted width={400} preload="none" className="hover:scale-105 transition-transform duration-500">
+                  <video autoPlay loop muted playsInline preload="metadata" width={400} className="hover:scale-105 transition-transform duration-500">
                     <source src="/robot-animation.mp4" type="video/mp4" />
                   </video>
                 </div>

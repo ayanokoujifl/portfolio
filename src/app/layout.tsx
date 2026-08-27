@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import { JetBrains_Mono, Fira_Mono } from "next/font/google"
 import "./globals.css"
-import { Suspense } from "react"
-import Loading from "./loading"
+
 
 export const metadata: Metadata = {
   title: "Atomic portfolio",
@@ -32,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${jetBrainsMono.className} ${firaSans.variable} antialiased bg-gray-100`}
       >
-        <Suspense fallback={<Loading />}>{children}</Suspense>
+        {children}
       </body>
     </html>
   )

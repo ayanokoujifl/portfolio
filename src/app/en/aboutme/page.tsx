@@ -1,5 +1,3 @@
-"use client"
-
 import { AtomicIcon } from "@/components/atomicIcon"
 import { Header } from "@/components/header"
 import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react"

@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import clsx from "clsx"
 import { LucideIcon } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useState } from "react"
 
 type Props = {
@@ -17,10 +18,14 @@ type Props = {
 }
 
 export function DropdownHeader({ icon: Icon }: Props) {
-  const router = useRouter()
   const pathname = usePathname()
   const [language, route] = pathname.split("/").slice(1)
   const [isOpen, setIsOpen] = useState(false)
+
+  const homeUrl = `/${language}`
+  const projectsUrl = `/${language}/projects`
+  const aboutMeUrl = `/${language}/aboutme`
+  const toggleLangUrl = `/${language === "en" ? "pt" : "en"}/${route ? route : ""}`
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -31,7 +36,7 @@ export function DropdownHeader({ icon: Icon }: Props) {
             isOpen && "text-cyan-400"
           )}
         >
-          <Icon onClick={() => setIsOpen(!isOpen)} />
+          <Icon />
         </span>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 relative right-4">
@@ -39,36 +44,25 @@ export function DropdownHeader({ icon: Icon }: Props) {
           {language === "pt" ? "Ir para..." : "Go to..."}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => router.push("/" + language)}>
-          {language === "pt" ? "Página inicial" : "Home page"}
+        <DropdownMenuItem asChild>
+          <Link href={homeUrl} className="w-full cursor-pointer">
+            {language === "pt" ? "Página inicial" : "Home page"}
+          </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => {
-            const url = `/${language}/projects`
-            router.replace(url)
-          }}
-        >
-          {language === "pt" ? "Projetos" : "Projects"}
+        <DropdownMenuItem asChild>
+          <Link href={projectsUrl} className="w-full cursor-pointer">
+            {language === "pt" ? "Projetos" : "Projects"}
+          </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => {
-            console.log(language)
-            const url = `/${language}/aboutme`
-            router.replace(url)
-          }}
-        >
-          {language === "pt" ? "Sobre mim" : "About me"}
+        <DropdownMenuItem asChild>
+          <Link href={aboutMeUrl} className="w-full cursor-pointer">
+            {language === "pt" ? "Sobre mim" : "About me"}
+          </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem
-          className="md:hidden block"
-          onClick={() => {
-            const url = `/${language === "en" ? "pt" : "en"}/${
-              route ? route : ""
-            }`
-            router.replace(url)
-          }}
-        >
-          {language === "pt" ? "Alterar idioma" : "Toggle language"}
+        <DropdownMenuItem asChild className="md:hidden">
+          <Link href={toggleLangUrl} className="w-full cursor-pointer">
+            {language === "pt" ? "Alterar idioma" : "Toggle language"}
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

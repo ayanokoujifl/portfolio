@@ -33,52 +33,52 @@ function Project3DPreview({
   if (!active) return null
 
   return (
-    <div className="mb-5 rounded-2xl border border-white/10 bg-[#070B14] p-3">
-      <div className="stage-spotlight relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-xl border border-white/[0.07]">
+    <div className="mb-4 rounded-xl border border-slate-200 bg-slate-950 p-2.5 shadow-inner">
+      <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-slate-900 via-[#0b1533] to-slate-950">
         <img
           src={animate ? active.animatedSrc : active.posterSrc}
           alt={active.label}
           loading="lazy"
           decoding="async"
-          className="max-h-full w-auto object-contain drop-shadow-[0_14px_24px_rgba(0,0,0,0.65)]"
+          className="max-h-full w-auto object-contain drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)]"
         />
 
         <button
           type="button"
           onClick={() => setAnimate((v) => !v)}
-          className="absolute bottom-2.5 right-2.5 rounded-lg border border-white/15 bg-[#060911]/85 px-2.5 py-1 font-mono text-[10px] text-slate-200 hover:border-cyan-400/50"
+          className="absolute bottom-2 right-2 rounded border border-white/20 bg-slate-950/80 px-2 py-0.5 text-[10px] text-slate-200 hover:border-cyan-400"
         >
-          {animate ? "❚❚ Pause WebP" : "▶ Play 3D"}
+          {animate ? "❚❚ Pause" : "▶ Play 3D"}
         </button>
 
         <a
           href={active.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute bottom-2.5 left-2.5 inline-flex items-center gap-1 rounded-lg border border-cyan-500/30 bg-cyan-500/15 px-2.5 py-1 font-mono text-[10px] text-cyan-200 hover:bg-cyan-500/25"
+          className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded border border-cyan-400/40 bg-cyan-500/20 px-2 py-0.5 text-[10px] font-semibold text-cyan-200 hover:bg-cyan-500/35"
         >
           <span>{active.liveLabel}</span>
-          <ArrowUpRight className="h-3 w-3" />
+          <ArrowUpRight className="size-3" />
         </a>
       </div>
 
-      <div className="mt-2.5 flex flex-wrap gap-1.5">
+      <div className="mt-2 flex flex-wrap gap-1.5">
         {models.map((m, idx) => (
           <button
             key={m.id}
             type="button"
             onClick={() => setSelectedIdx(idx)}
-            className={`rounded-lg px-2.5 py-1 font-mono text-[10px] transition-colors ${
+            className={`rounded px-2 py-1 text-[10px] transition-colors ${
               idx === selectedIdx
-                ? "bg-cyan-400 text-slate-950 font-semibold"
-                : "border border-white/10 bg-white/[0.03] text-slate-300 hover:text-white"
+                ? "bg-cyan-500 font-bold text-slate-950"
+                : "border border-slate-700 bg-slate-900 text-slate-300 hover:text-white"
             }`}
           >
             {m.label}
           </button>
         ))}
       </div>
-      <p className="mt-2 text-[11px] text-slate-400">{note}</p>
+      <p className="mt-1.5 text-[10px] text-slate-400">{note}</p>
     </div>
   )
 }
@@ -96,13 +96,13 @@ function ProjectCard({
 }) {
   return (
     <article
-      className={`glass-panel flex flex-col justify-between rounded-2xl p-6 transition-all hover:border-white/20 ${
-        project.featured ? "border-emerald-500/25" : ""
+      className={`carousel-bg flex flex-col justify-between rounded-xl border bg-white p-5 shadow-md hover:shadow-cyan-500/15 transition-all duration-300 ${
+        project.featured ? "border-cyan-500/45" : "border-slate-200"
       }`}
     >
       <div>
         <div className="mb-4 flex items-start justify-between gap-3">
-          <div className="flex items-center gap-3.5">
+          <div className="flex items-center gap-3">
             {project.iconSrc ? (
               <img
                 src={project.iconSrc}
@@ -110,24 +110,28 @@ function ProjectCard({
                 width={48}
                 height={48}
                 loading="lazy"
-                className="h-12 w-12 shrink-0 rounded-2xl border border-white/15 bg-[#090D16] object-cover"
+                className={`size-12 shrink-0 rounded-xl border p-1.5 object-contain shadow-sm ${
+                  project.darkIconBg
+                    ? "border-slate-800 bg-[#0B1736]"
+                    : "border-slate-200 bg-slate-50"
+                }`}
               />
             ) : (
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-300">
-                <Layers className="h-5 w-5" />
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-50 text-cyan-700">
+                <Layers className="size-5" />
               </div>
             )}
             <div>
-              <span className="block font-mono text-[10px] uppercase tracking-wider text-emerald-400">
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-cyan-700">
                 {project.categoryLabel}
               </span>
-              <h3 className="font-display text-lg font-bold text-white leading-snug">
+              <h3 className="text-base font-bold leading-snug text-gray-900">
                 {project.title}
               </h3>
             </div>
           </div>
 
-          <span className="shrink-0 rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 font-mono text-[10px] text-slate-300">
+          <span className="shrink-0 rounded-full border border-cyan-200 bg-cyan-50 px-2.5 py-0.5 text-[10px] font-semibold text-cyan-800">
             {project.status}
           </span>
         </div>
@@ -137,22 +141,26 @@ function ProjectCard({
         )}
 
         {project.staticCover && (
-          <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-[#090D16]">
+          <div className="mb-4 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 aspect-video">
             <Image
               src={project.staticCover}
               alt={project.title}
-              className="h-44 w-full object-cover object-top"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={Boolean(project.featured)}
+              className="h-full w-full object-cover object-top"
             />
           </div>
         )}
 
-        <p className="text-sm leading-relaxed text-slate-200">{project.summary}</p>
+        <p className="text-xs leading-relaxed text-slate-700 sm:text-sm">
+          {project.summary}
+        </p>
 
-        <div className="mt-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-3.5">
-          <span className="block font-mono text-[10px] uppercase tracking-wider text-cyan-400">
+        <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3">
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-[#180370]">
             {architectureLabel}
           </span>
-          <p className="mt-1 text-xs leading-relaxed text-slate-300">
+          <p className="mt-1 text-xs leading-relaxed text-slate-600">
             {project.architectureNotes}
           </p>
         </div>
@@ -163,7 +171,7 @@ function ProjectCard({
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="rounded-md border border-white/[0.07] bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] text-slate-300"
+              className="rounded border border-slate-200 bg-slate-100 px-2 py-0.5 text-[10px] text-slate-700"
             >
               {tech}
             </span>
@@ -171,16 +179,16 @@ function ProjectCard({
         </div>
 
         {(project.primaryLink || project.secondaryLink || project.gallery) && (
-          <div className="flex flex-wrap items-center gap-3 border-t border-white/[0.07] pt-4 text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-3.5 text-xs font-bold">
             {project.primaryLink && (
               <a
                 href={project.primaryLink.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-emerald-400 transition-colors hover:text-emerald-300"
+                className="inline-flex items-center gap-1 text-cyan-700 transition-colors hover:text-cyan-500"
               >
                 <span>{project.primaryLink.label}</span>
-                <ArrowUpRight className="h-3.5 w-3.5" />
+                <ArrowUpRight className="size-3.5" />
               </a>
             )}
 
@@ -189,10 +197,10 @@ function ProjectCard({
                 href={project.secondaryLink.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-slate-300 transition-colors hover:text-white"
+                className="inline-flex items-center gap-1 text-slate-700 transition-colors hover:text-[#180370]"
               >
                 <span>{project.secondaryLink.label}</span>
-                <ArrowUpRight className="h-3.5 w-3.5" />
+                <ArrowUpRight className="size-3.5" />
               </a>
             )}
 
@@ -201,18 +209,18 @@ function ProjectCard({
                 <DialogTrigger asChild>
                   <button
                     type="button"
-                    className="ml-auto inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/[0.04] px-3 py-1.5 font-mono text-[11px] text-slate-200 transition-colors hover:border-cyan-400/50 hover:text-white"
+                    className="ml-auto inline-flex items-center gap-1.5 rounded-lg border border-cyan-500/40 bg-cyan-50 px-3 py-1.5 text-[11px] font-bold text-cyan-800 transition-colors hover:bg-cyan-100"
                   >
-                    <Smartphone className="h-3.5 w-3.5 text-cyan-400" />
+                    <Smartphone className="size-3.5 text-cyan-700" />
                     <span>{inspectLabel}</span>
                   </button>
                 </DialogTrigger>
-                <DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto border-white/15 bg-[#090D16] text-slate-100">
+                <DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto border-slate-200 bg-slate-50 text-gray-900">
                   <DialogHeader>
-                    <DialogTitle className="font-display text-xl text-white">
+                    <DialogTitle className="font-fira text-xl font-bold text-cyan-700">
                       {project.title} — UI Gallery
                     </DialogTitle>
-                    <DialogDescription className="text-slate-400">
+                    <DialogDescription className="text-slate-600">
                       {project.summary}
                     </DialogDescription>
                   </DialogHeader>
@@ -220,14 +228,14 @@ function ProjectCard({
                     {project.gallery.map((shot, idx) => (
                       <figure
                         key={idx}
-                        className="overflow-hidden rounded-xl border border-white/10 bg-[#060911]"
+                        className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
                       >
                         <Image
                           src={shot.src}
                           alt={shot.caption}
                           className="h-auto w-full object-contain"
                         />
-                        <figcaption className="border-t border-white/[0.07] px-3 py-2 font-mono text-[11px] text-slate-300">
+                        <figcaption className="border-t border-slate-200 px-3 py-2 text-[11px] text-slate-700">
                           {shot.caption}
                         </figcaption>
                       </figure>
@@ -243,24 +251,18 @@ function ProjectCard({
   )
 }
 
-export function ProjectShowcaseGrid({
-  lang,
-  featuredOnly = false,
-}: {
-  lang: Locale
-  featuredOnly?: boolean
-}) {
+export function ProjectShowcaseGrid({ lang }: { lang: Locale }) {
   const [filter, setFilter] = useState<"all" | ProjectCategory>("all")
   const content = portfolioData[lang]
 
-  const list = featuredOnly
-    ? content.projects.filter((p) => p.featured)
-    : content.projects.filter((p) => filter === "all" || p.category === filter)
+  const list = content.projects.filter(
+    (p) => filter === "all" || p.category === filter
+  )
 
   return (
     <div className="space-y-8">
-      {!featuredOnly && (
-        <div className="inline-flex flex-wrap gap-1.5 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5">
+      <div className="flex justify-center">
+        <div className="inline-flex flex-wrap gap-1.5 rounded-xl border border-slate-200 bg-white p-1.5 shadow-sm">
           {content.projectsPage.filters.map((tab) => {
             const active = filter === tab.id
             return (
@@ -268,10 +270,10 @@ export function ProjectShowcaseGrid({
                 key={tab.id}
                 type="button"
                 onClick={() => setFilter(tab.id)}
-                className={`rounded-xl px-3.5 py-2 text-xs font-semibold transition-all ${
+                className={`rounded-lg px-3.5 py-2 text-xs font-bold transition-all ${
                   active
-                    ? "bg-emerald-500 text-slate-950 shadow-sm"
-                    : "text-slate-300 hover:bg-white/[0.05] hover:text-white"
+                    ? "bg-cyan-600 text-white shadow-sm"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-gray-900"
                 }`}
               >
                 {tab.label}
@@ -279,13 +281,9 @@ export function ProjectShowcaseGrid({
             )
           })}
         </div>
-      )}
+      </div>
 
-      <div
-        className={`grid grid-cols-1 gap-6 ${
-          featuredOnly ? "lg:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-3"
-        }`}
-      >
+      <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
         {list.map((project) => (
           <ProjectCard
             key={project.id}

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { FileDown, Globe, Menu, X } from "lucide-react"
+import { FileDown, Layers2, X } from "lucide-react"
 import { portfolioData, sharedProfile, type Locale } from "@/data/portfolio"
 
 export function Navbar({ lang }: { lang: Locale }) {
@@ -25,86 +25,93 @@ export function Navbar({ lang }: { lang: Locale }) {
     exact ? pathname === href : Boolean(pathname?.startsWith(href))
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#060911]/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        {/* Identity */}
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-gray-100/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link
           href={`/${lang}`}
           onClick={() => setMobileOpen(false)}
-          className="group flex items-center gap-3 shrink-0"
+          className="group flex items-center gap-2.5 text-xs text-slate-500 transition-colors hover:text-cyan-700"
         >
           <img
-            src={sharedProfile.avatarSrc}
-            alt={sharedProfile.name}
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-full border border-white/15 object-cover transition-colors group-hover:border-emerald-400/60"
+            src="/icon.svg"
+            alt="Atomic LG logo"
+            width={40}
+            height={40}
+            className="size-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
           />
           <div className="leading-tight">
-            <span className="block font-display text-sm font-bold tracking-tight text-white">
+            <span className="block font-bold text-gray-900 group-hover:text-cyan-700">
               {sharedProfile.name}
             </span>
-            <span className="block font-mono text-[10px] uppercase tracking-widest text-emerald-400/90">
-              {sharedProfile.handle}
-            </span>
+            <span className="block text-[11px] text-slate-400">@dev_atomic_journey</span>
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav aria-label="Primary navigation" className="hidden items-center gap-1 md:flex">
+        {/* Desktop Minimalist Nav */}
+        <nav aria-label="Primary navigation" className="hidden items-center gap-6 md:flex">
           {links.map((item) => {
             const active = isActive(item.href, item.exact)
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
+                className={`border-b-2 py-0.5 text-xs font-semibold transition-all duration-150 ${
                   active
-                    ? "bg-white/10 text-white"
-                    : "text-slate-300 hover:bg-white/[0.05] hover:text-white"
+                    ? "border-cyan-500 text-cyan-700"
+                    : "border-transparent text-slate-700 hover:border-cyan-400 hover:text-cyan-700"
                 }`}
               >
                 {item.label}
               </Link>
             )
           })}
-        </nav>
 
-        {/* Desktop Actions + Mobile Toggle */}
-        <div className="flex items-center gap-2">
-          <Link
-            href={switchedPath}
-            aria-label={`Switch language to ${targetLang.toUpperCase()}`}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-xs text-slate-300 transition-colors hover:border-white/25 hover:text-white"
-          >
-            <Globe className="h-3.5 w-3.5 text-cyan-400" />
-            <span>{t.switchToLabel}</span>
-          </Link>
+          <div className="h-4 w-px bg-slate-300" />
 
           <a
             href={cvHref}
             download
-            className="hidden items-center gap-1.5 rounded-xl bg-emerald-500 px-3.5 py-2 text-xs font-bold text-slate-950 shadow-lg shadow-emerald-500/15 transition-all hover:bg-emerald-400 sm:inline-flex"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 shadow-sm transition-all hover:border-cyan-500 hover:text-cyan-700"
           >
-            <FileDown className="h-3.5 w-3.5" />
+            <FileDown className="size-3.5 text-cyan-600" />
             <span>{t.downloadCv}</span>
           </a>
 
+          <Link
+            href={switchedPath}
+            aria-label={`Switch language to ${targetLang.toUpperCase()}`}
+            className="cursor-pointer text-xs font-bold text-gray-900 transition-colors hover:text-cyan-600"
+          >
+            {lang.toUpperCase()} → {t.switchToLabel}
+          </Link>
+        </nav>
+
+        {/* Mobile Actions */}
+        <div className="flex items-center gap-3 md:hidden">
+          <Link
+            href={switchedPath}
+            aria-label={`Switch language to ${targetLang.toUpperCase()}`}
+            className="rounded border border-slate-300 bg-white px-2 py-1 text-xs font-bold text-gray-900 hover:border-cyan-500 hover:text-cyan-700"
+          >
+            {t.switchToLabel}
+          </Link>
           <button
             type="button"
             aria-expanded={mobileOpen}
             aria-label="Toggle navigation menu"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-200 transition-colors hover:bg-white/[0.09] md:hidden"
+            className={`inline-flex size-9 items-center justify-center rounded-lg border border-slate-300 bg-white transition-colors ${
+              mobileOpen ? "text-cyan-500 border-cyan-400" : "text-gray-900 hover:text-cyan-600"
+            }`}
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileOpen ? <X className="size-5" /> : <Layers2 className="size-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="border-t border-white/[0.07] bg-[#080C16]/98 px-4 py-4 space-y-1.5 md:hidden">
+        <div className="border-t border-slate-200 bg-white px-4 py-4 space-y-2 md:hidden shadow-md">
           {links.map((item) => {
             const active = isActive(item.href, item.exact)
             return (
@@ -112,8 +119,10 @@ export function Navbar({ lang }: { lang: Locale }) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors ${
-                  active ? "bg-white/10 text-white" : "text-slate-300 hover:bg-white/[0.05] hover:text-white"
+                className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-cyan-50 text-cyan-700 font-bold"
+                    : "text-slate-700 hover:bg-slate-100"
                 }`}
               >
                 {item.label}
@@ -124,9 +133,9 @@ export function Navbar({ lang }: { lang: Locale }) {
             href={cvHref}
             download
             onClick={() => setMobileOpen(false)}
-            className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-xs font-bold text-slate-950"
+            className="mt-2 flex items-center justify-center gap-2 rounded-lg border border-cyan-500/40 bg-cyan-50 px-3 py-2 text-xs font-bold text-cyan-800"
           >
-            <FileDown className="h-4 w-4" />
+            <FileDown className="size-4" />
             <span>{t.downloadCv}</span>
           </a>
         </div>

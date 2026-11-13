@@ -12,6 +12,8 @@ import cpe3 from "@/assets/projects/mobile/cpe/cpe-3.jpg"
 import cpe4 from "@/assets/projects/mobile/cpe/cpe-4.jpg"
 import cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
 import oliveiraImg from "@/assets/projects/OR.png"
+import walletAgentCover from "@/assets/projects/wallet-agent.png"
+import minhaEscalaCover from "@/assets/projects/minha-escala.png"
 
 export type Locale = "pt" | "en"
 export type ProjectCategory = "backend-ai" | "mobile" | "web-3d"
@@ -67,6 +69,7 @@ export interface PortfolioProject {
   architectureNotes: string
   stack: string[]
   iconSrc?: string
+  darkIconBg?: boolean
   staticCover?: StaticImageData
   gallery?: GalleryItem[]
   models3d?: WebPModelPreview[]
@@ -428,6 +431,8 @@ export const portfolioData: Record<Locale, LocaleContent> = {
           "Backend Kotlin + Spring Boot 3 (WebFlux/Coroutines) compilado em GraalVM Native Image no Cloud Run. Domínio isolado via Arquitetura Hexagonal, PostgreSQL assíncrono (R2DBC), Open Finance (Pluggy API) e Gemini API.",
         stack: ["Kotlin", "Spring WebFlux", "GraalVM Native", "PostgreSQL R2DBC", "Gemini AI", "Pluggy", "Next.js"],
         iconSrc: "/media/wallet-agent.webp",
+        darkIconBg: true,
+        staticCover: walletAgentCover,
         primaryLink: {
           url: "https://wallet-agent.ayanokoujifl.com",
           label: "Acessar Plataforma",
@@ -446,6 +451,7 @@ export const portfolioData: Record<Locale, LocaleContent> = {
           "Refatorado integralmente para Kotlin Nativo com Jetpack Compose em Arquitetura Hexagonal e persistência Room/SQLite offline-first, reduzindo o cold start em 40% e mantendo 99,9% crash-free sessions.",
         stack: ["Kotlin", "Jetpack Compose", "Arquitetura Hexagonal", "Room / SQLite", "AdMob"],
         iconSrc: "/media/minha-escala.webp",
+        staticCover: minhaEscalaCover,
         gallery: [
           { src: meHome, caption: "Tela inicial com visão geral dos plantões" },
           { src: meFinancial, caption: "Previsão financeira e horas trabalhadas" },
@@ -769,6 +775,8 @@ export const portfolioData: Record<Locale, LocaleContent> = {
           "Reactive Kotlin + Spring Boot 3 (WebFlux/Coroutines) compiled to GraalVM Native Image on Cloud Run. Strict Hexagonal domain, PostgreSQL R2DBC, Pluggy Open Finance, and Gemini API.",
         stack: ["Kotlin", "Spring WebFlux", "GraalVM Native", "PostgreSQL R2DBC", "Gemini AI", "Pluggy", "Next.js"],
         iconSrc: "/media/wallet-agent.webp",
+        darkIconBg: true,
+        staticCover: walletAgentCover,
         primaryLink: {
           url: "https://wallet-agent.ayanokoujifl.com",
           label: "Open Platform",
@@ -787,6 +795,7 @@ export const portfolioData: Record<Locale, LocaleContent> = {
           "Migrated to native Kotlin + Jetpack Compose under Hexagonal Architecture with offline Room/SQLite persistence, reducing cold start by 40% while sustaining 99.9% crash-free sessions.",
         stack: ["Kotlin", "Jetpack Compose", "Hexagonal Architecture", "Room / SQLite", "AdMob"],
         iconSrc: "/media/minha-escala.webp",
+        staticCover: minhaEscalaCover,
         gallery: [
           { src: meHome, caption: "Home schedule & shift overview" },
           { src: meFinancial, caption: "Monthly financial & overtime projection" },

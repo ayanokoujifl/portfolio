@@ -39,20 +39,22 @@ export default async function ProjectsPage({
   const t = portfolioData[lang].projectsPage
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-      <div className="mb-10 max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-emerald-400">
+    <div className="min-h-screen bg-slate-50 text-gray-900">
+      <div className="bg-gradient-to-b from-gray-100 to-slate-50 px-5 py-12 text-center">
+        <p className="text-xs font-bold uppercase tracking-widest text-cyan-700">
           {t.eyebrow}
         </p>
-        <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <h1 className="mt-2 bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text font-fira text-3xl font-extrabold tracking-tight text-transparent drop-shadow-sm sm:text-4xl">
           {t.title}
         </h1>
-        <p className="mt-3 text-base leading-relaxed text-slate-300 sm:text-lg">
+        <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 sm:text-base">
           {t.subtitle}
         </p>
       </div>
 
-      <ProjectShowcaseGrid lang={lang} />
+      <div className="mx-auto max-w-7xl px-5 pb-16 sm:px-8">
+        <ProjectShowcaseGrid lang={lang} />
+      </div>
     </div>
   )
 }

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Core Atomic Gradient: vibrant signature cyan (#24e4ee) radiating to deep navy -->
+    <radialGradient id="orbitCyanNavy" cx="256" cy="256" r="218" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6EF3FA" />
+      <stop offset="28%" stop-color="#24E4EE" />
+      <stop offset="56%" stop-color="#0284C7" />
+      <stop offset="82%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#0A1738" />
+    </radialGradient>
+
+    <!-- Thin center highlight tracing the cyan energy core -->
+    <radialGradient id="orbitRimGlow" cx="256" cy="256" r="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A5FAFF" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#24E4EE" stop-opacity="0.7" />
+      <stop offset="85%" stop-color="#38BDF8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.15" />
+    </radialGradient>
+
+    <linearGradient id="coreRingCyan" x1="210" y1="210" x2="302" y2="302" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7FF5FB" />
+      <stop offset="55%" stop-color="#24E4EE" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+
+    <filter id="softCyanAura" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Subtle cyan energy aura matching dev_atomic_journey -->
+  <g filter="url(#softCyanAura)" opacity="0.45">
+    <ellipse cx="256" cy="256" rx="64" ry="214" stroke="#24E4EE" stroke-width="10" />
+    <ellipse cx="256" cy="256" rx="64" ry="214" transform="rotate(45 256 256)" stroke="#24E4EE" stroke-width="10" />
+    <ellipse cx="256" cy="256" rx="64" ry="214" transform="rotate(-45 256 256)" stroke="#24E4EE" stroke-width="10" />
+    <ellipse cx="256" cy="256" rx="214" ry="64" stroke="#24E4EE" stroke-width="10" />
+  </g>
+
+  <!-- Primary 4-orbit atomic geometry -->
+  <g>
+    <ellipse cx="256" cy="256" rx="64" ry="214" stroke="url(#orbitCyanNavy)" stroke-width="18" />
+    <ellipse cx="256" cy="256" rx="64" ry="214" transform="rotate(45 256 256)" stroke="url(#orbitCyanNavy)" stroke-width="18" />
+    <ellipse cx="256" cy="256" rx="64" ry="214" transform="rotate(-45 256 256)" stroke="url(#orbitCyanNavy)" stroke-width="18" />
+    <ellipse cx="256" cy="256" rx="214" ry="64" stroke="url(#orbitCyanNavy)" stroke-width="18" />
+  </g>
+
+  <!-- Specular inner filament so outer tips retain definition -->
+  <g>
+    <ellipse cx="256" cy="256" rx="64" ry="214" stroke="url(#orbitRimGlow)" stroke-width="3" />
+    <ellipse cx="256" cy="256" rx="64" ry="214" transform="rotate(45 256 256)" stroke="url(#orbitRimGlow)" stroke-width="3" />
+    <ellipse cx="256" cy="256" rx="64" ry="214" transform="rotate(-45 256 256)" stroke="url(#orbitRimGlow)" stroke-width="3" />
+    <ellipse cx="256" cy="256" rx="214" ry="64" stroke="url(#orbitRimGlow)" stroke-width="3" />
+  </g>
+
+  <!-- Compact Nucleus (r=45 vs old r=64) -->
+  <circle cx="256" cy="256" r="45" fill="#071024" stroke="url(#coreRingCyan)" stroke-width="4" />
+  <circle cx="256" cy="256" r="40" fill="#091530" />
+
+  <!-- Monogram LG scaled cleanly inside the compact core -->
+  <path d="M232 238H239V267H252V274H236L232 270V238Z" fill="#F8FAFC" />
+  <path d="M261 238H280V245H264V267H273V260H268V254H280V270L276 274H261L257 270V242Z" fill="#24E4EE" />
+</svg>

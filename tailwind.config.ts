@@ -10,9 +10,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--font-outfit)", "var(--font-inter)", "ui-sans-serif", "sans-serif"],
+        fira: ["var(--font-fira-sans)", "ui-monospace", "monospace"],
+        jetbrains: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+        sans: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",

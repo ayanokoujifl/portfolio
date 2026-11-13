@@ -1,30 +1,31 @@
 import type { Metadata } from "next"
-import { Inter, JetBrains_Mono, Outfit } from "next/font/google"
+import { Fira_Mono, JetBrains_Mono } from "next/font/google"
 import { sharedProfile } from "@/data/portfolio"
 import "./globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-})
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-})
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 })
 
+const firaMono = Fira_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-fira-sans",
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(sharedProfile.portfolioDomain),
-  title: `${sharedProfile.name} | Software Engineer`,
+  title: `Atomic Portfolio — ${sharedProfile.name}`,
   description:
-    "Software Engineering Portfolio & Resume — Kotlin, Java/Spring Boot, Next.js, Astro & Hexagonal Architecture.",
+    "Portfolio of Luís Gustavo Leite — Mobile (Kotlin/KMP), Backend (Java/Spring Boot), Next.js, Astro & 3D.",
   icons: {
-    icon: "/icon.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
   },
 }
 
@@ -34,9 +35,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="pt-BR">
       <body
-        className={`${inter.variable} ${outfit.variable} ${jetBrainsMono.variable} bg-[#060911] font-sans text-slate-100 antialiased`}
+        className={`${jetBrainsMono.className} ${jetBrainsMono.variable} ${firaMono.variable} antialiased bg-gray-100 text-gray-900`}
       >
         {children}
       </body>

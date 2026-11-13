@@ -5,25 +5,27 @@ export function Footer({ lang }: { lang: Locale }) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-white/[0.07] bg-[#04070D] py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-        <div className="space-y-1.5">
+    <footer className="border-t border-slate-200 bg-gray-100 py-8 text-slate-600">
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6">
+        <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            <span className="font-display text-sm font-bold text-white">{sharedProfile.name}</span>
+            <img src="/icon.svg" alt="" aria-hidden="true" width={18} height={18} className="size-4" />
+            <span className="text-xs font-bold text-gray-900">
+              {sharedProfile.name} · @dev_atomic_journey
+            </span>
           </div>
-          <p className="text-xs text-slate-400">{t.tagline}</p>
-          <p className="font-mono text-[11px] text-slate-500">
+          <p className="text-xs text-slate-500">{t.tagline}</p>
+          <p className="text-[11px] text-slate-400">
             © {year} {sharedProfile.name}. {t.rights}
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
           <a
             href={sharedProfile.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-300 transition-colors hover:text-white"
+            className="text-slate-600 transition-colors hover:text-gray-900 hover:font-semibold"
           >
             GitHub ↗
           </a>
@@ -31,13 +33,13 @@ export function Footer({ lang }: { lang: Locale }) {
             href={sharedProfile.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-300 transition-colors hover:text-white"
+            className="text-slate-600 transition-colors hover:text-blue-600 hover:font-semibold"
           >
             LinkedIn ↗
           </a>
           <a
             href={`mailto:${sharedProfile.email}`}
-            className="font-mono text-slate-300 transition-colors hover:text-cyan-300"
+            className="text-slate-600 transition-colors hover:text-cyan-700 hover:font-semibold"
           >
             {sharedProfile.email}
           </a>
@@ -45,15 +47,15 @@ export function Footer({ lang }: { lang: Locale }) {
             href={sharedProfile.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-400 transition-colors hover:text-emerald-300"
+            className="text-slate-600 transition-colors hover:text-green-600 hover:font-semibold"
           >
             WhatsApp ↗
           </a>
-          <span className="hidden h-3 w-px bg-white/15 sm:inline-block" />
-          <a href={sharedProfile.cvPtPath} download className="font-mono text-slate-400 hover:text-emerald-300">
+          <span className="hidden h-3 w-px bg-slate-300 sm:inline-block" />
+          <a href={sharedProfile.cvPtPath} download className="text-cyan-700 hover:underline">
             {t.resumePt}
           </a>
-          <a href={sharedProfile.cvEnPath} download className="font-mono text-slate-400 hover:text-emerald-300">
+          <a href={sharedProfile.cvEnPath} download className="text-cyan-700 hover:underline">
             {t.resumeEn}
           </a>
         </div>

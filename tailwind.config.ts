@@ -10,21 +10,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        fira: ["var(--font-fira-sans)"],
-        jetbrains: ["var(--font-jetbrains-mono)"],
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-outfit)", "var(--font-inter)", "ui-sans-serif", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      colors: {},
-    },
-    screens: {
-      md: "648px",
-      lg: "840px",
     },
   },
-
   plugins: [require("tailwindcss-animate")],
 } satisfies Config

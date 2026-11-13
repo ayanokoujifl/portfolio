@@ -1,25 +1,32 @@
 import type { Metadata } from "next"
-import { JetBrains_Mono, Fira_Mono } from "next/font/google"
+import { Inter, JetBrains_Mono, Outfit } from "next/font/google"
+import { sharedProfile } from "@/data/portfolio"
 import "./globals.css"
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
 
-export const metadata: Metadata = {
-  title: "Atomic portfolio",
-  description: "Portofolio of Luís Gustavo",
-  icons: {
-    icon: "/icon.png",
-  },
-}
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+})
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 })
-const firaSans = Fira_Mono({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-fira-sans",
-})
+
+export const metadata: Metadata = {
+  metadataBase: new URL(sharedProfile.portfolioDomain),
+  title: `${sharedProfile.name} | Software Engineer`,
+  description:
+    "Software Engineering Portfolio & Resume — Kotlin, Java/Spring Boot, Next.js, Astro & Hexagonal Architecture.",
+  icons: {
+    icon: "/icon.png",
+  },
+}
 
 export default function RootLayout({
   children,
@@ -27,9 +34,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="en" className="dark">
       <body
-        className={`${jetBrainsMono.className} ${firaSans.variable} antialiased bg-gray-100`}
+        className={`${inter.variable} ${outfit.variable} ${jetBrainsMono.variable} bg-[#060911] font-sans text-slate-100 antialiased`}
       >
         {children}
       </body>

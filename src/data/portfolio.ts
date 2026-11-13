@@ -14,6 +14,12 @@ import cpe5 from "@/assets/projects/mobile/cpe/cpe-5.jpg"
 import oliveiraImg from "@/assets/projects/OR.png"
 import walletAgentCover from "@/assets/projects/wallet-agent.png"
 import minhaEscalaCover from "@/assets/projects/minha-escala.png"
+import dentistHeroImg from "@/assets/projects/web/dentist-hero.webp"
+import dentistWhiteningImg from "@/assets/projects/web/dentist-clareamento.webp"
+import barbershopHeroImg from "@/assets/projects/web/barbershop-hero.webp"
+import advocacyHeroImg from "@/assets/projects/web/advocacy-hero.webp"
+import advocacyAto2Img from "@/assets/projects/web/advocacy-ato2.webp"
+import massageHeroImg from "@/assets/projects/web/massage-hero.webp"
 
 export type Locale = "pt" | "en"
 export type ProjectCategory = "backend-ai" | "mobile" | "web-3d"
@@ -303,7 +309,7 @@ export const portfolioData: Record<Locale, LocaleContent> = {
         { id: "mobile", label: "Mobile & KMP" },
         { id: "web-3d", label: "Web & 3D Blender" },
       ],
-      inspectGalleryLabel: "Ver telas do app",
+      inspectGalleryLabel: "Explorar telas",
       architectureLabel: "Decisão Arquitetural",
       blenderHeading: "Previews 3D em WebP",
       blenderNote: "Clique nas abas para alternar entre os modelos 3D em produção.",
@@ -567,6 +573,82 @@ export const portfolioData: Record<Locale, LocaleContent> = {
           { src: cpe4, caption: "Fluxo de registro em operação" },
           { src: cpe5, caption: "Visão consolidada do aplicativo" },
         ],
+      },
+      {
+        id: "dentista-odonto",
+        title: "Dr. Luís Gustavo Leite — Odontologia 3D",
+        category: "web-3d",
+        categoryLabel: "Landing Page 3D • Saúde",
+        status: "Publicado",
+        summary:
+          "Landing page editorial em scrollytelling 3D para ortodontia digital, clareamento supervisionado e estética, conectando renders do Blender à reserva de consulta.",
+        architectureNotes:
+          "Astro SSG com sequências WebP transparentes acionadas por scroll, integração Resend serverless na Vercel e roteamento direto para avaliação em BH.",
+        stack: ["Astro", "Blender 3D", "WebP Scrollytelling", "Resend API", "Vercel"],
+        staticCover: dentistHeroImg,
+        gallery: [
+          { src: dentistHeroImg, caption: "Hero com arcada e alinhadores transparentes em 3D" },
+          { src: dentistWhiteningImg, caption: "Simulação interativa 3D de clareamento dental" },
+        ],
+        primaryLink: {
+          url: "https://dentist.ayanokoujifl.com",
+          label: "Abrir Site",
+        },
+      },
+      {
+        id: "barbearia-julios",
+        title: "Julio's Barbearia — Assinatura 3D",
+        category: "web-3d",
+        categoryLabel: "Landing Page 3D • Grooming",
+        status: "Publicado",
+        summary:
+          "Experiência web para a Julio's Barbearia com navalhete 3D articulado animado pela rolagem e direcionamento direto para o aplicativo de agendamento.",
+        architectureNotes:
+          "Astro SSG + Tailwind CSS v4 com modelagem hard-surface do navalhete no Blender sincronizada ao scroll sem sacrificar Core Web Vitals.",
+        stack: ["Astro", "Tailwind v4", "Blender 3D", "ScrollTrigger"],
+        staticCover: barbershopHeroImg,
+        primaryLink: {
+          url: "https://barbershop.ayanokoujifl.com",
+          label: "Abrir Site",
+        },
+      },
+      {
+        id: "advocacia-ferreira",
+        title: "Advocacia Ferreira — Estratégia Digital",
+        category: "web-3d",
+        categoryLabel: "Web & Storytelling 3D • Direito",
+        status: "Publicado",
+        summary:
+          "Landing page jurídica estruturada como partida de xadrez em 5 atos 3D para escritórios boutique de Direito Empresarial e Contencioso em Belo Horizonte.",
+        architectureNotes:
+          "Astro SSG + Vercel Edge com processamento otimizado via Sharp, renders 3D autorais e fluxo de análise preliminar via Resend API.",
+        stack: ["Astro", "Blender 3D", "Resend API", "Sharp", "Vercel"],
+        staticCover: advocacyHeroImg,
+        gallery: [
+          { src: advocacyHeroImg, caption: "Ato I — Abertura com tabuleiro estratégico 3D" },
+          { src: advocacyAto2Img, caption: "Ato II — Desenvolvimento visual e leitura de cenários" },
+        ],
+        primaryLink: {
+          url: "https://advocacy-lg.vercel.app",
+          label: "Abrir Site",
+        },
+      },
+      {
+        id: "jack-massoterapia",
+        title: "Jack Massoterapia — Alívio & Recuperação",
+        category: "web-3d",
+        categoryLabel: "Web & Ilha Interativa 3D",
+        status: "Publicado",
+        summary:
+          "Landing page focada em recuperação muscular e tratamentos terapêuticos com arquitetura Astro combinada a ilha React e cena Spline 3D.",
+        architectureNotes:
+          "Astro + React Islands (@astrojs/react) com @splinetool/react-spline e Tailwind CSS v4 para carregamento seletivo da camada 3D.",
+        stack: ["Astro", "React Island", "Spline 3D", "Tailwind CSS"],
+        staticCover: massageHeroImg,
+        primaryLink: {
+          url: "https://massage-lg.vercel.app",
+          label: "Abrir Site",
+        },
       },
       {
         id: "oliveira-rosa",
@@ -911,6 +993,82 @@ export const portfolioData: Record<Locale, LocaleContent> = {
           { src: cpe4, caption: "Field submission flow" },
           { src: cpe5, caption: "Consolidated overview" },
         ],
+      },
+      {
+        id: "dentista-odonto",
+        title: "Dr. Luís Gustavo Leite — 3D Dental Studio",
+        category: "web-3d",
+        categoryLabel: "3D Landing Page • Healthcare",
+        status: "Live",
+        summary:
+          "3D scrollytelling landing page for digital orthodontics, supervised whitening, and aesthetics — bridging custom Blender sequences with consultation booking.",
+        architectureNotes:
+          "Astro SSG driving scroll-scrubbed RGBA WebP renders paired with serverless Resend lead capture on Vercel.",
+        stack: ["Astro", "Blender 3D", "WebP Scrollytelling", "Resend API", "Vercel"],
+        staticCover: dentistHeroImg,
+        gallery: [
+          { src: dentistHeroImg, caption: "Hero showcase with floating 3D dental arch and aligners" },
+          { src: dentistWhiteningImg, caption: "Interactive 3D teeth whitening simulation stage" },
+        ],
+        primaryLink: {
+          url: "https://dentist.ayanokoujifl.com",
+          label: "Visit Live Site",
+        },
+      },
+      {
+        id: "barbearia-julios",
+        title: "Julio's Barbershop — 3D Signature Web",
+        category: "web-3d",
+        categoryLabel: "3D Landing Page • Grooming",
+        status: "Live",
+        summary:
+          "Editorial barbershop showcase featuring a scroll-animated custom 3D straight razor feeding directly into online mobile booking.",
+        architectureNotes:
+          "Astro SSG + Tailwind CSS v4 paired with hard-surface Blender razor renders synchronized to viewport scroll without main-thread jank.",
+        stack: ["Astro", "Tailwind v4", "Blender 3D", "ScrollTrigger"],
+        staticCover: barbershopHeroImg,
+        primaryLink: {
+          url: "https://barbershop.ayanokoujifl.com",
+          label: "Visit Live Site",
+        },
+      },
+      {
+        id: "advocacia-ferreira",
+        title: "Advocacia Ferreira — Legal 3D Strategy",
+        category: "web-3d",
+        categoryLabel: "3D Narrative Web • Legal",
+        status: "Live",
+        summary:
+          "Boutique corporate law portal structured as a 5-act interactive chess narrative for high-stakes litigation and tax planning in Brazil.",
+        architectureNotes:
+          "Astro SSG deployed on Vercel with Sharp image pipelines, custom Blender scenes, and confidential Resend intake forms.",
+        stack: ["Astro", "Blender 3D", "Resend API", "Sharp", "Vercel"],
+        staticCover: advocacyHeroImg,
+        gallery: [
+          { src: advocacyHeroImg, caption: "Act I — Opening dark-gold 3D chessboard stage" },
+          { src: advocacyAto2Img, caption: "Act II — Strategic legal preparation walkthrough" },
+        ],
+        primaryLink: {
+          url: "https://advocacy-lg.vercel.app",
+          label: "Visit Live Site",
+        },
+      },
+      {
+        id: "jack-massoterapia",
+        title: "Jack Massage Therapy — Web & 3D Island",
+        category: "web-3d",
+        categoryLabel: "Web & 3D React Island",
+        status: "Live",
+        summary:
+          "Sports recovery and wellness landing page combining Astro's zero-JS shell with a React island for Spline 3D integration and booking conversion.",
+        architectureNotes:
+          "Astro + React (@astrojs/react) with @splinetool/react-spline and Tailwind CSS v4 for isolated 3D hydration.",
+        stack: ["Astro", "React Island", "Spline 3D", "Tailwind CSS"],
+        staticCover: massageHeroImg,
+        primaryLink: {
+          url: "https://massage-lg.vercel.app",
+          label: "Visit Live Site",
+        },
       },
       {
         id: "oliveira-rosa",

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ArrowUpRight, Layers, Smartphone } from "lucide-react"
+import { ArrowUpRight, Layers } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -211,7 +211,7 @@ function ProjectCard({
                     type="button"
                     className="ml-auto inline-flex items-center gap-1.5 rounded-lg border border-cyan-500/40 bg-cyan-50 px-3 py-1.5 text-[11px] font-bold text-cyan-800 transition-colors hover:bg-cyan-100"
                   >
-                    <Smartphone className="size-3.5 text-cyan-700" />
+                    <Layers className="size-3.5 text-cyan-700" />
                     <span>{inspectLabel}</span>
                   </button>
                 </DialogTrigger>

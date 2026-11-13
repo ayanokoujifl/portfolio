@@ -92,7 +92,7 @@ export default async function HomePage({
           <div className="relative flex items-center justify-center p-2">
             <div className="pointer-events-none absolute inset-6 rounded-full bg-[#24e4ee]/15 blur-2xl" />
             <img
-              src="/media/atomic-3d.webp"
+              src="/media/atomic-3d.webp?v=2"
               alt={isPt ? "Átomo 3D rotacionando — marca dev_atomic_journey" : "Rotating 3D Atom — dev_atomic_journey mark"}
               width={320}
               height={320}

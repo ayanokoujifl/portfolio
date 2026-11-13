@@ -184,7 +184,7 @@ const blenderPreviewsPt: WebPModelPreview[] = [
   },
   {
     id: "caneta",
-    label: "Caneta Estética (Branch yanne)",
+    label: "Caneta 4 Atos (Branch yanne)",
     animatedSrc: "/media/3d/caneta.webp",
     posterSrc: "/media/3d/caneta-poster.webp",
     liveUrl: "https://dentist.ayanokoujifl.com",
@@ -200,7 +200,7 @@ const blenderPreviewsPt: WebPModelPreview[] = [
   },
   {
     id: "skyline",
-    label: "Skyline R34 Turntable",
+    label: "Skyline R34 · Túnel de Luz",
     animatedSrc: "/media/3d/skyline.webp",
     posterSrc: "/media/3d/skyline-poster.webp",
     liveUrl: "https://insufilm.ayanokoujifl.com",
@@ -211,7 +211,7 @@ const blenderPreviewsPt: WebPModelPreview[] = [
 const blenderPreviewsEn: WebPModelPreview[] = [
   {
     id: "arcada",
-    label: "Dental Arch & Aligner",
+    label: "Dental Arch & Aligner (0–80)",
     animatedSrc: "/media/3d/arcada.webp",
     posterSrc: "/media/3d/arcada-poster.webp",
     liveUrl: "https://dentist.ayanokoujifl.com",
@@ -219,7 +219,7 @@ const blenderPreviewsEn: WebPModelPreview[] = [
   },
   {
     id: "caneta",
-    label: "Dosing Pen (Branch yanne)",
+    label: "Dosing Pen · 4 Acts (yanne)",
     animatedSrc: "/media/3d/caneta.webp",
     posterSrc: "/media/3d/caneta-poster.webp",
     liveUrl: "https://dentist.ayanokoujifl.com",
@@ -235,7 +235,7 @@ const blenderPreviewsEn: WebPModelPreview[] = [
   },
   {
     id: "skyline",
-    label: "Skyline R34 Turntable",
+    label: "Skyline R34 · Light Tunnel",
     animatedSrc: "/media/3d/skyline.webp",
     posterSrc: "/media/3d/skyline-poster.webp",
     liveUrl: "https://insufilm.ayanokoujifl.com",

@@ -41,13 +41,22 @@ export default async function ProjectsPage({
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900">
       <div className="bg-gradient-to-b from-gray-100 to-slate-50 px-5 py-12 text-center">
-        <p className="text-xs font-bold uppercase tracking-widest text-cyan-700">
+        <p
+          data-hero-stagger
+          className="text-xs font-bold uppercase tracking-widest text-cyan-700"
+        >
           {t.eyebrow}
         </p>
-        <h1 className="mt-2 bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text font-fira text-3xl font-extrabold tracking-tight text-transparent drop-shadow-sm sm:text-4xl">
+        <h1
+          data-hero-stagger
+          className="mt-2 bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text font-fira text-3xl font-extrabold tracking-tight text-transparent drop-shadow-sm sm:text-4xl"
+        >
           {t.title}
         </h1>
-        <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 sm:text-base">
+        <p
+          data-hero-stagger
+          className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 sm:text-base"
+        >
           {t.subtitle}
         </p>
       </div>

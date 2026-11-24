@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Fira_Mono, JetBrains_Mono } from "next/font/google"
+import { MotionProvider } from "@/components/MotionProvider"
 import { sharedProfile } from "@/data/portfolio"
 import "./globals.css"
 
@@ -35,11 +36,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${jetBrainsMono.className} ${jetBrainsMono.variable} ${firaMono.variable} antialiased bg-gray-100 text-gray-900`}
       >
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   )

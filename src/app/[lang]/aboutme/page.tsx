@@ -44,14 +44,20 @@ export default async function AboutPage({
       <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-12 sm:px-6">
         {/* Heading + CV Download Buttons — Restores 3bd8f43 .loop-gradient */}
         <section className="space-y-4 text-center">
-          <h1 className="loop-gradient font-fira text-3xl font-bold sm:text-4xl">
+          <h1 data-hero-stagger className="loop-gradient font-fira text-3xl font-bold sm:text-4xl">
             {lang === "pt" ? "Quem eu sou" : "Who I am"}
           </h1>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+          <p
+            data-hero-stagger
+            className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base"
+          >
             {t.aboutPage.subtitle}
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div
+            data-hero-stagger
+            className="flex flex-wrap items-center justify-center gap-3 pt-2"
+          >
             <a
               href={sharedProfile.cvPtPath}
               download
@@ -72,7 +78,10 @@ export default async function AboutPage({
         </section>
 
         {/* Skills Matrix with Classic <AtomicIcon /> Bullets */}
-        <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <section
+          data-reveal
+          className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+        >
           <h2 className="mb-6 text-center text-xl font-bold text-gray-900">
             {t.aboutPage.skillsHeading}
           </h2>
@@ -95,13 +104,14 @@ export default async function AboutPage({
 
         {/* Work Experience Timeline (3bd8f43 Border-Bottom Clean Rhythm) */}
         <section className="space-y-6">
-          <h2 className="text-center text-2xl font-bold text-gray-900">
+          <h2 data-reveal className="text-center text-2xl font-bold text-gray-900">
             {t.aboutPage.experienceHeading}
           </h2>
-          <ul className="space-y-5">
+          <ul data-stagger-group className="space-y-5">
             {t.experiences.map((exp) => (
               <li
                 key={`${exp.company}-${exp.period}`}
+                data-stagger-item
                 className="border-b-2 border-slate-300 pb-5"
               >
                 <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
@@ -143,8 +153,8 @@ export default async function AboutPage({
         </section>
 
         {/* Education, Certifications & Languages */}
-        <section className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <section data-stagger-group className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div data-stagger-item className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 text-base font-bold text-gray-900">
               {t.aboutPage.educationHeading}
             </h2>
@@ -159,7 +169,7 @@ export default async function AboutPage({
             </div>
           </div>
 
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div data-stagger-item className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 text-base font-bold text-gray-900">
               {t.aboutPage.certificationsHeading}
             </h2>
@@ -173,7 +183,7 @@ export default async function AboutPage({
             </ul>
           </div>
 
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div data-stagger-item className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 text-base font-bold text-gray-900">
               {t.aboutPage.languagesHeading}
             </h2>
@@ -191,7 +201,7 @@ export default async function AboutPage({
         <div className="h-0.5 w-full bg-slate-300" />
 
         {/* Talk With Me Strip — Direct Signature Style from 3bd8f43 */}
-        <section className="flex flex-col items-center justify-center py-2">
+        <section data-reveal className="flex flex-col items-center justify-center py-2">
           <h3 className="text-xl font-bold text-gray-900">
             {lang === "pt" ? "Fale comigo" : "Talk with me"}
           </h3>

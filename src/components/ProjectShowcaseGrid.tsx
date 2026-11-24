@@ -1,7 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ArrowUpRight, Layers } from "lucide-react"
 import {
   Dialog,
@@ -96,6 +98,7 @@ function ProjectCard({
 }) {
   return (
     <article
+      data-project-item
       className={`carousel-bg flex flex-col justify-between rounded-xl border bg-white p-5 shadow-md hover:shadow-cyan-500/15 transition-all duration-300 ${
         project.featured ? "border-cyan-500/45" : "border-slate-200"
       }`}
@@ -253,15 +256,66 @@ function ProjectCard({
 
 export function ProjectShowcaseGrid({ lang }: { lang: Locale }) {
   const [filter, setFilter] = useState<"all" | ProjectCategory>("all")
+  const gridRef = useRef<HTMLDivElement>(null)
   const content = portfolioData[lang]
 
   const list = content.projects.filter(
     (p) => filter === "all" || p.category === filter
   )
 
+  useEffect(() => {
+    const container = gridRef.current
+    if (!container) return
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    let removeListener: (() => void) | null = null
+    const ctx = gsap.context(() => {
+      const items = container.querySelectorAll<HTMLElement>("[data-project-item]")
+      if (items.length === 0) return
+
+      const animateCards = () => {
+        gsap.fromTo(
+          items,
+          { y: 22, scale: 0.98, opacity: 0 },
+          {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.48,
+            stagger: 0.055,
+            ease: "power3.out",
+            clearProps: "transform,opacity",
+          }
+        )
+        requestAnimationFrame(() => {
+          window.__atomicLenis?.resize()
+          ScrollTrigger.refresh()
+        })
+      }
+
+      if (window.__atomicPreloaderDone) {
+        animateCards()
+      } else {
+        gsap.set(items, { opacity: 0, y: 22 })
+        const onReady = () => {
+          removeListener = null
+          ctx.add(() => animateCards())
+        }
+        window.addEventListener("atomic-preloader-done", onReady, { once: true })
+        removeListener = () => window.removeEventListener("atomic-preloader-done", onReady)
+      }
+    }, gridRef)
+
+    return () => {
+      if (removeListener) removeListener()
+      ctx.revert()
+    }
+  }, [filter, lang])
+
   return (
     <div className="space-y-8">
-      <div className="flex justify-center">
+      <div className="flex justify-center" data-reveal>
         <div className="inline-flex flex-wrap gap-1.5 rounded-xl border border-slate-200 bg-white p-1.5 shadow-sm">
           {content.projectsPage.filters.map((tab) => {
             const active = filter === tab.id
@@ -283,7 +337,7 @@ export function ProjectShowcaseGrid({ lang }: { lang: Locale }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div ref={gridRef} className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
         {list.map((project) => (
           <ProjectCard
             key={project.id}

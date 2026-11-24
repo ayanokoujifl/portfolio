@@ -10,7 +10,6 @@
   html {
     background-color: #f3f4f6;
     color: #111827;
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -131,15 +130,4 @@ ul li p {
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background-color: #64748b;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .loop-gradient,
-  .atom-float,
-  .loading {
-    animation: none;
-  }
 }

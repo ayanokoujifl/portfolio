@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import Lenis from "lenis"
+import type Lenis from "lenis"
 import "lenis/dist/lenis.css"
 import { PagePreloader } from "@/components/PagePreloader"
 
@@ -21,30 +21,45 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
-    const lenis = new Lenis({
-      lerp: 0.065,
-      smoothWheel: true,
-      wheelMultiplier: 0.85,
-      touchMultiplier: 1.35,
+    if (!window.matchMedia("(pointer: fine)").matches) {
+      delete window.__atomicLenis
+      return
+    }
+
+    let cancelled = false
+    let lenisInstance: Lenis | null = null
+    let tick: ((time: number) => void) | null = null
+
+    void import("lenis").then(({ default: LenisCtor }) => {
+      if (cancelled) return
+
+      const lenis = new LenisCtor({
+        lerp: 0.065,
+        smoothWheel: true,
+        wheelMultiplier: 0.85,
+        touchMultiplier: 1.35,
+      })
+
+      lenisInstance = lenis
+      window.__atomicLenis = lenis
+
+      if (!window.__atomicPreloaderDone) {
+        lenis.stop()
+      }
+
+      lenis.on("scroll", ScrollTrigger.update)
+
+      tick = (time: number) => {
+        lenis.raf(time * 1000)
+      }
+      gsap.ticker.add(tick)
+      gsap.ticker.lagSmoothing(0)
     })
 
-    window.__atomicLenis = lenis
-
-    if (!window.__atomicPreloaderDone) {
-      lenis.stop()
-    }
-
-    lenis.on("scroll", ScrollTrigger.update)
-
-    const tick = (time: number) => {
-      lenis.raf(time * 1000)
-    }
-    gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
-
     return () => {
-      gsap.ticker.remove(tick)
-      lenis.destroy()
+      cancelled = true
+      if (tick) gsap.ticker.remove(tick)
+      if (lenisInstance) lenisInstance.destroy()
       delete window.__atomicLenis
     }
   }, [])
@@ -64,21 +79,9 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     }
 
     let cleanupPreloaderListener: (() => void) | null = null
+    let rafId = 0
 
     const ctx = gsap.context(() => {
-      if (scrollProgressEl) {
-        gsap.to(scrollProgressEl, {
-          scaleX: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: document.documentElement,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.25,
-          },
-        })
-      }
-
       const playEntrance = () => {
         const heroStagger = document.querySelectorAll<HTMLElement>("[data-hero-stagger]")
         if (heroStagger.length > 0) {
@@ -95,108 +98,126 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
         const heroAtom = document.querySelector<HTMLElement>("[data-hero-atom]")
         if (heroAtom) {
           gsap.from(heroAtom, {
-            scale: 0.82,
-            y: 26,
-            opacity: 0,
-            duration: 0.95,
-            delay: 0.12,
+            scale: 0.94,
+            y: 18,
+            duration: 0.85,
+            delay: 0.05,
             ease: "power3.out",
-            clearProps: "transform,opacity",
+            clearProps: "transform",
           })
         }
       }
 
-      if (window.__atomicPreloaderDone) {
+      const setupScrollTriggers = () => {
+        if (scrollProgressEl) {
+          gsap.to(scrollProgressEl, {
+            scaleX: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: document.documentElement,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 0.25,
+            },
+          })
+        }
+
+        const mm = gsap.matchMedia()
+        mm.add("(min-width: 768px)", () => {
+          const atomEl = document.querySelector<HTMLElement>("[data-hero-atom]")
+          const copyEl = document.querySelector<HTMLElement>("[data-hero-copy]")
+          const heroSection = document.querySelector<HTMLElement>("[data-hero-section]")
+          if (!heroSection) return
+
+          if (atomEl) {
+            gsap.to(atomEl, {
+              y: -46,
+              scale: 0.95,
+              ease: "none",
+              scrollTrigger: {
+                trigger: heroSection,
+                start: "top top",
+                end: "bottom top",
+                scrub: 1.0,
+              },
+            })
+          }
+
+          if (copyEl) {
+            gsap.to(copyEl, {
+              y: -28,
+              ease: "none",
+              scrollTrigger: {
+                trigger: heroSection,
+                start: "top top",
+                end: "bottom top",
+                scrub: 1.0,
+              },
+            })
+          }
+        })
+
+        document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+          gsap.from(el, {
+            y: 34,
+            opacity: 0,
+            duration: 0.78,
+            ease: "power3.out",
+            clearProps: "transform,opacity",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+              once: true,
+            },
+          })
+        })
+
+        document.querySelectorAll<HTMLElement>("[data-stagger-group]").forEach((group) => {
+          const items = group.querySelectorAll<HTMLElement>("[data-stagger-item]")
+          if (items.length === 0) return
+
+          gsap.from(items, {
+            y: 36,
+            scale: 0.97,
+            opacity: 0,
+            duration: 0.72,
+            stagger: 0.09,
+            ease: "power3.out",
+            clearProps: "transform,opacity",
+            scrollTrigger: {
+              trigger: group,
+              start: "top 88%",
+              once: true,
+            },
+          })
+        })
+      }
+
+      const startMotionAfterBoot = () => {
         playEntrance()
+        rafId = requestAnimationFrame(() => {
+          ctx.add(() => setupScrollTriggers())
+          window.__atomicLenis?.resize()
+          ScrollTrigger.refresh()
+        })
+      }
+
+      if (window.__atomicPreloaderDone) {
+        startMotionAfterBoot()
       } else {
         const onReady = () => {
           cleanupPreloaderListener = null
-          ctx.add(() => playEntrance())
+          ctx.add(() => startMotionAfterBoot())
         }
         window.addEventListener("atomic-preloader-done", onReady, { once: true })
         cleanupPreloaderListener = () => {
           window.removeEventListener("atomic-preloader-done", onReady)
         }
       }
-
-      const mm = gsap.matchMedia()
-      mm.add("(min-width: 768px)", () => {
-        const atomEl = document.querySelector<HTMLElement>("[data-hero-atom]")
-        const copyEl = document.querySelector<HTMLElement>("[data-hero-copy]")
-        const heroSection = document.querySelector<HTMLElement>("[data-hero-section]")
-        if (!heroSection) return
-
-        if (atomEl) {
-          gsap.to(atomEl, {
-            y: -46,
-            scale: 0.95,
-            ease: "none",
-            scrollTrigger: {
-              trigger: heroSection,
-              start: "top top",
-              end: "bottom top",
-              scrub: 1.0,
-            },
-          })
-        }
-
-        if (copyEl) {
-          gsap.to(copyEl, {
-            y: -28,
-            ease: "none",
-            scrollTrigger: {
-              trigger: heroSection,
-              start: "top top",
-              end: "bottom top",
-              scrub: 1.0,
-            },
-          })
-        }
-      })
-
-      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.from(el, {
-          y: 34,
-          opacity: 0,
-          duration: 0.78,
-          ease: "power3.out",
-          clearProps: "transform,opacity",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 88%",
-            once: true,
-          },
-        })
-      })
-
-      document.querySelectorAll<HTMLElement>("[data-stagger-group]").forEach((group) => {
-        const items = group.querySelectorAll<HTMLElement>("[data-stagger-item]")
-        if (items.length === 0) return
-
-        gsap.from(items, {
-          y: 36,
-          scale: 0.97,
-          opacity: 0,
-          duration: 0.72,
-          stagger: 0.09,
-          ease: "power3.out",
-          clearProps: "transform,opacity",
-          scrollTrigger: {
-            trigger: group,
-            start: "top 88%",
-            once: true,
-          },
-        })
-      })
-    })
-
-    const rafId = requestAnimationFrame(() => {
-      window.__atomicLenis?.resize()
-      ScrollTrigger.refresh()
     })
 
     return () => {
-      cancelAnimationFrame(rafId)
+      if (rafId) cancelAnimationFrame(rafId)
       if (cleanupPreloaderListener) cleanupPreloaderListener()
       ctx.revert()
     }

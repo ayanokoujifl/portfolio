@@ -6,12 +6,14 @@ import "./globals.css"
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-jetbrains-mono",
 })
 
 const firaMono = Fira_Mono({
   weight: ["400", "700"],
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-fira-sans",
 })
 

@@ -29,7 +29,7 @@ function Project3DPreview({
 }) {
   const models = project.models3d || []
   const [selectedIdx, setSelectedIdx] = useState(0)
-  const [animate, setAnimate] = useState(true)
+  const [animate, setAnimate] = useState(false)
   const active = models[selectedIdx]
 
   if (!active) return null

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight, FileDown } from "lucide-react"
+import { HeroAtom } from "@/components/HeroAtom"
 import { portfolioData, sharedProfile, type Locale } from "@/data/portfolio"
 
 function isLocale(value: string): value is Locale {
@@ -103,15 +104,7 @@ export default async function HomePage({
         <div className="my-2 flex flex-col items-center justify-center">
           <div data-hero-atom className="relative flex items-center justify-center p-2">
             <div className="pointer-events-none absolute inset-6 rounded-full bg-[#24e4ee]/15 blur-2xl" />
-            <img
-              src="/media/atomic-3d.webp?v=3"
-              alt={isPt ? "Átomo 3D rotacionando — marca dev_atomic_journey" : "Rotating 3D Atom — dev_atomic_journey mark"}
-              width={320}
-              height={320}
-              fetchPriority="high"
-              decoding="async"
-              className="relative z-10 size-64 sm:size-80 object-contain drop-shadow-[0_14px_24px_rgba(24,3,112,0.14)]"
-            />
+            <HeroAtom isPt={isPt} />
           </div>
 
           {/* Crisp 3-metric monospace line */}

@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-const MAX_WAIT_MS = 1800
+const DESKTOP_MAX_WAIT_MS = 1800
+const MOBILE_MAX_WAIT_MS = 850
 
 export function PagePreloader() {
   const pathname = usePathname()
@@ -61,9 +62,18 @@ export function PagePreloader() {
       )
     }
 
+    const isMobile = window.innerWidth < 768
+    const maxWaitMs = isMobile ? MOBILE_MAX_WAIT_MS : DESKTOP_MAX_WAIT_MS
+    const phase1Duration = isMobile ? 0.42 : 0.85
+    const finishDuration = isMobile ? 0.22 : 0.42
+    const exitDelay = isMobile ? 0.06 : 0.14
+    const fadeDuration = isMobile ? 0.18 : 0.32
+    const curtainDuration = isMobile ? 0.48 : 0.72
+    const curtainPos = isMobile ? 0.1 : 0.18
+
     const proxy = { val: 0 }
     let phase1Done = false
-    let fontsReady = false
+    let fontsReady = isMobile
     let heroImgReady = false
     let finishing = false
     let exited = false
@@ -107,7 +117,7 @@ export function PagePreloader() {
 
       const fadeTargets = [innerEl, chromeEl].filter(Boolean) as HTMLElement[]
       exitTl = gsap.timeline({
-        delay: 0.14,
+        delay: exitDelay,
         onComplete: () => {
           outerRingTween?.kill()
           innerRingTween?.kill()
@@ -124,7 +134,7 @@ export function PagePreloader() {
           y: -22,
           scale: 0.94,
           opacity: 0,
-          duration: 0.32,
+          duration: fadeDuration,
           ease: "power3.in",
         })
       }
@@ -133,7 +143,7 @@ export function PagePreloader() {
         el,
         {
           yPercent: -100,
-          duration: 0.72,
+          duration: curtainDuration,
           ease: "power4.inOut",
           onStart: () => {
             window.__atomicPreloaderDone = true
@@ -141,7 +151,7 @@ export function PagePreloader() {
             window.dispatchEvent(new CustomEvent("atomic-preloader-done"))
           },
         },
-        fadeTargets.length > 0 ? 0.18 : 0
+        fadeTargets.length > 0 ? curtainPos : 0
       )
     }
 
@@ -152,7 +162,7 @@ export function PagePreloader() {
 
       phase2Tween = gsap.to(proxy, {
         val: 100,
-        duration: 0.42,
+        duration: finishDuration,
         ease: "power3.inOut",
         overwrite: "auto",
         onUpdate: applyProgress,
@@ -170,7 +180,7 @@ export function PagePreloader() {
 
     phase1Tween = gsap.to(proxy, {
       val: 78,
-      duration: 0.85,
+      duration: phase1Duration,
       ease: "power2.out",
       onUpdate: applyProgress,
       onComplete: () => {
@@ -179,9 +189,9 @@ export function PagePreloader() {
       },
     })
 
-    ceilingTimer = setTimeout(finishTo100, MAX_WAIT_MS)
+    ceilingTimer = setTimeout(finishTo100, maxWaitMs)
 
-    if (document.fonts && typeof document.fonts.ready?.then === "function") {
+    if (!isMobile && document.fonts && typeof document.fonts.ready?.then === "function") {
       document.fonts.ready
         .then(() => {
           fontsReady = true
@@ -195,7 +205,7 @@ export function PagePreloader() {
       fontsReady = true
     }
 
-    const heroImg = document.querySelector<HTMLImageElement>('img[src*="atomic-3d.webp"]')
+    const heroImg = document.querySelector<HTMLImageElement>("[data-hero-atom-poster]")
     const onImgDone = () => {
       heroImgReady = true
       tryFinish()

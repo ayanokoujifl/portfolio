@@ -11,6 +11,12 @@
   "engines": {
     "node": ">=20.0.0"
   },
+  "browserslist": [
+    "Chrome >= 111",
+    "Edge >= 111",
+    "Firefox >= 111",
+    "Safari >= 16.4"
+  ],
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-dropdown-menu": "^2.1.5",

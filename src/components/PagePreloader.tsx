@@ -240,16 +240,16 @@ export function PagePreloader() {
       <div
         aria-hidden="true"
         data-preloader-aura
-        className="pointer-events-none absolute size-[420px] rounded-full bg-[#24e4ee]/15 blur-[110px]"
+        className="pointer-events-none absolute size-[420px] rounded-full bg-[#24e4ee]/15 blur-[110px] lg:size-[560px]"
       />
 
-      <div data-preloader-inner className="relative z-10 flex flex-col items-center gap-6">
-        <div className="relative flex size-32 items-center justify-center sm:size-36">
-          <div data-preloader-hud aria-hidden="true" className="pointer-events-none absolute -inset-2">
-            <span className="absolute top-0 left-0 size-3.5 border-t border-l border-[#24e4ee]/70" />
-            <span className="absolute top-0 right-0 size-3.5 border-t border-r border-[#24e4ee]/70" />
-            <span className="absolute bottom-0 left-0 size-3.5 border-b border-l border-[#24e4ee]/70" />
-            <span className="absolute bottom-0 right-0 size-3.5 border-b border-r border-[#24e4ee]/70" />
+      <div data-preloader-inner className="relative z-10 flex flex-col items-center gap-6 sm:gap-8">
+        <div className="relative flex size-32 items-center justify-center sm:size-48 lg:size-56">
+          <div data-preloader-hud aria-hidden="true" className="pointer-events-none absolute -inset-2 sm:-inset-3">
+            <span className="absolute top-0 left-0 size-3.5 border-t border-l border-[#24e4ee]/70 sm:size-5" />
+            <span className="absolute top-0 right-0 size-3.5 border-t border-r border-[#24e4ee]/70 sm:size-5" />
+            <span className="absolute bottom-0 left-0 size-3.5 border-b border-l border-[#24e4ee]/70 sm:size-5" />
+            <span className="absolute bottom-0 right-0 size-3.5 border-b border-r border-[#24e4ee]/70 sm:size-5" />
           </div>
 
           <svg
@@ -289,21 +289,20 @@ export function PagePreloader() {
           <img
             src="/icon.svg"
             alt=""
-            width={80}
-            height={80}
+            width={144}
+            height={144}
             data-preloader-logo
-            className="relative z-10 size-16 object-contain drop-shadow-[0_0_24px_rgba(36,228,238,0.45)] sm:size-20"
+            className="relative z-10 size-16 object-contain drop-shadow-[0_0_24px_rgba(36,228,238,0.45)] sm:size-32 lg:size-36"
           />
         </div>
 
-        <div className="space-y-1 text-center">
+        <div className="space-y-1.5 text-center">
           <div className="overflow-hidden pb-1.5">
             <span
               data-preloader-title
-              className="block font-fira text-2xl font-light leading-snug tracking-tight text-[#24e4ee] sm:text-4xl"
+              className="block font-fira text-xl font-semibold leading-snug tracking-tight text-[#24e4ee] sm:text-3xl lg:text-4xl"
             >
-              {"<dev atomic journey/>"}
-              <span className="ml-0.5 inline-block animate-pulse text-cyan-200">_</span>
+              {isPt ? "Bem-vindo ao meu Portfolio" : "Welcome to my Portfolio"}
             </span>
           </div>
           <div className="overflow-hidden pb-1">

@@ -22,10 +22,9 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     gsap.registerPlugin(ScrollTrigger)
 
     const lenis = new Lenis({
-      duration: 1.35,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.065,
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 0.85,
       touchMultiplier: 1.35,
     })
 
@@ -75,7 +74,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
             trigger: document.documentElement,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.15,
+            scrub: 0.25,
           },
         })
       }
